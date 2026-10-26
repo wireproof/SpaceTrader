@@ -2,7 +2,7 @@
 
 Native iPhone/iPad port of Pieter Spronck’s Space Trader 1.2.2, using the original C gameplay and Palm resources with a UIKit compatibility layer. Includes adaptive navigation, the supplied planet icon, and Liquid Glass controls on iOS 26 and later.
 
-Current port release: **1.2.5 (build 6)**. Bundle ID: **com.wireproof.spacetrader**.
+Current port release: **1.2.6 (build 7)**. Bundle ID: **com.wireproof.spacetrader**.
 
 ## Build
 
@@ -32,3 +32,7 @@ Original game by Pieter Spronck, with Sam Anderson and Samuel Goldstein; origina
 Release 1.2.4: the four configurable Palm shortcuts now appear as native right-side glass buttons, using the original control events. The game canvas renders at 1600×1600 instead of 640×640 to avoid magnifying low-resolution text. Landscape Menu/Help use compact text insets and taller controls.
 
 Release 1.2.5: removes title/banner; uses full available game width with no sidebar deduction or 520-point cap. On layouts exposing a right safe-area margin of at least 60 points, shortcuts are pinned in that outer strip below the status area. Otherwise shortcuts form a row beneath the game. Short viewports scroll vertically, preserving the square game proportions. Duo placement requires device verification.
+
+Release 1.2.6: connected four-option glass shortcut bar with full labels, dividers and selected state. Native grouped Dock/View/Game/Help menus replace the tall action-sheet navigation. Cargo, dock, equipment and chart controls expose related destinations together. Navigation organization reference: https://github.com/SpaceTraderGame/SpaceTrader-Windows/blob/master/Form_SpaceTrader.cs (group boxes and menu definitions); no Windows source code copied. This is navigation adaptation, not a complete replacement of the Palm content panels.
+
+At 700 points and wider, the active game panel sits beside persistent system/ship/cargo context and grouped navigation, following the Windows port’s side-by-side organization. Compact cover layouts retain full-width content.
