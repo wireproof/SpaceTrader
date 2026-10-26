@@ -2,7 +2,7 @@
 
 Native iPhone/iPad port of Pieter Spronck’s Space Trader 1.2.2, using the original C gameplay and Palm resources with a UIKit compatibility layer. Includes adaptive navigation, the supplied planet icon, and Liquid Glass controls on iOS 26 and later.
 
-Current port release: **1.2.4 (build 5)**. Bundle ID: **com.wireproof.spacetrader**.
+Current port release: **1.2.5 (build 6)**. Bundle ID: **com.wireproof.spacetrader**.
 
 ## Build
 
@@ -30,3 +30,5 @@ Simulator launch arguments `--selftest` and `--resume-selftest` exercise gamepla
 Original game by Pieter Spronck, with Sam Anderson and Samuel Goldstein; original graphics by Alexander Lawrence. Source: https://spronck.net/spacetrader/ . `original/` preserves original source and licensing. `ios/Game/` contains the adapted C source, and `ios/Runtime.m` the iOS compatibility layer. The original game is GPL-2.0-or-later; the compatibility layer is GPL-3.0-or-later. License texts are in `ios/Resources/` and `original/`. Resource-format/palette references: https://github.com/migueletto/PumpkinOS (GPLv3). No Palm ROM is required.
 
 Release 1.2.4: the four configurable Palm shortcuts now appear as native right-side glass buttons, using the original control events. The game canvas renders at 1600×1600 instead of 640×640 to avoid magnifying low-resolution text. Landscape Menu/Help use compact text insets and taller controls.
+
+Release 1.2.5: removes title/banner; uses full available game width with no sidebar deduction or 520-point cap. On layouts exposing a right safe-area margin of at least 60 points, shortcuts are pinned in that outer strip below the status area. Otherwise shortcuts form a row beneath the game. Short viewports scroll vertically, preserving the square game proportions. Duo placement requires device verification.

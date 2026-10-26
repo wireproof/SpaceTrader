@@ -16,6 +16,7 @@ static int fontID,dialogDepth;
 static BOOL dirty,clipSet;
 static UIViewController *controller;
 static UIImageView *screenView;
+static UIScrollView *dashboardScroll;
 static NSMutableDictionary *images;
 static NSString *saveDirectory;
 static UIFont *font(int f) {return [UIFont systemFontOfSize:f==2?12:8 weight:f==1?UIFontWeightSemibold:UIFontWeightRegular];}
@@ -137,10 +138,6 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
 - (UILabel*)label:(NSInteger)tag size:(CGFloat)size color:(UIColor*)color {UILabel*l=[UILabel new];l.tag=tag;l.font=[UIFont systemFontOfSize:size weight:UIFontWeightMedium];l.textColor=color;l.adjustsFontSizeToFitWidth=YES;l.minimumScaleFactor=.7;[self.view addSubview:l];return l;}
 - (void)viewDidLoad {
  [super viewDidLoad];self.view.backgroundColor=[UIColor colorWithRed:.89 green:.92 blue:.93 alpha:1];
- UIVisualEffect*material=[UIBlurEffect effectWithStyle:UIBlurEffectStyleSystemMaterial];if(@available(iOS 26.0,*)){material=[UIGlassEffect effectWithStyle:UIGlassEffectStyleRegular];}UIView*header=[[UIVisualEffectView alloc]initWithEffect:material];header.tag=980;header.layer.cornerRadius=24;header.clipsToBounds=YES;[self.view addSubview:header];
- UIImageView*icon=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"AppIcon180"]];icon.tag=981;icon.layer.cornerRadius=9;icon.clipsToBounds=YES;[self.view addSubview:icon];
- [self label:982 size:23 color:UIColor.labelColor].text=@"Space Trader";
- [self label:983 size:11 color:UIColor.secondaryLabelColor].text=@"COMMANDER’S CONSOLE";
  UIView*panel=[UIView new];panel.tag=984;panel.backgroundColor=UIColor.whiteColor;panel.layer.cornerRadius=10;panel.layer.shadowColor=UIColor.blackColor.CGColor;panel.layer.shadowOpacity=.12;panel.layer.shadowRadius=8;panel.layer.shadowOffset=CGSizeMake(0,3);[self.view addSubview:panel];
  screenView=[UIImageView new];screenView.userInteractionEnabled=YES;screenView.backgroundColor=UIColor.whiteColor;screenView.layer.magnificationFilter=kCAFilterLinear;[self.view addSubview:screenView];[screenView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)]];
  [self label:985 size:13 color:[UIColor colorWithRed:.16 green:.33 blue:.41 alpha:1]];
@@ -150,22 +147,27 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
  NSArray*commands=@[@"Menu",@"▲",@"▼",@"Help"];for(int i=0;i<4;i++){UIButton*b=[UIButton buttonWithType:UIButtonTypeSystem];b.tag=900+i;[b setTitle:commands[i] forState:UIControlStateNormal];b.tintColor=[UIColor colorWithRed:.12 green:.29 blue:.39 alpha:1];b.titleLabel.font=[UIFont systemFontOfSize:13 weight:UIFontWeightSemibold];[b addTarget:self action:@selector(toolbar:) forControlEvents:UIControlEventTouchUpInside];if(@available(iOS 26.0,*)){UIButtonConfiguration*c=[UIButtonConfiguration glassButtonConfiguration];c.title=commands[i];c.contentInsets=NSDirectionalEdgeInsetsMake(2,2,2,2);c.titleTextAttributesTransformer=^NSDictionary*(NSDictionary*a){NSMutableDictionary*d=[a mutableCopy];d[NSFontAttributeName]=[UIFont systemFontOfSize:12 weight:UIFontWeightSemibold];return d;};b.configuration=c;}[self.view addSubview:b];}
  for(int i=0;i<4;i++){UIButton*b=[UIButton buttonWithType:UIButtonTypeSystem];b.tag=930+i;b.titleLabel.font=[UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];b.backgroundColor=[UIColor colorWithWhite:1 alpha:.85];b.layer.cornerRadius=20;[b addTarget:self action:@selector(shortcut:) forControlEvents:UIControlEventTouchUpInside];if(@available(iOS 26.0,*)){b.configuration=[UIButtonConfiguration glassButtonConfiguration];b.backgroundColor=UIColor.clearColor;}[self.view addSubview:b];}
 
+ dashboardScroll=[UIScrollView new];dashboardScroll.contentInsetAdjustmentBehavior=UIScrollViewContentInsetAdjustmentNever;dashboardScroll.alwaysBounceVertical=NO;NSArray*children=[self.view.subviews copy];[self.view insertSubview:dashboardScroll atIndex:0];for(UIView*v in children)if(v.tag<930||v.tag>933)[dashboardScroll addSubview:v];
+
 }
 - (void)viewDidLayoutSubviews {
- [super viewDidLayoutSubviews];CGRect b=UIEdgeInsetsInsetRect(self.view.bounds,self.view.safeAreaInsets);BOOL wide=b.size.width>b.size.height;
- CGFloat x=b.origin.x+16,y=b.origin.y,w=b.size.width-32;
- [self.view viewWithTag:980].frame=CGRectMake(x-6,y+2,w+12,70);
- [self.view viewWithTag:981].frame=CGRectMake(x,y+12,48,48);
- [self.view viewWithTag:982].frame=CGRectMake(x+60,y+10,w-60,30);
- [self.view viewWithTag:983].frame=CGRectMake(x+61,y+41,w-60,16);
- CGFloat size=wide?MIN(b.size.height-100,w-270):MIN(w-80,b.size.height-300);size=MAX(120,MIN(520,size));
- CGFloat sx=wide?x+190+(w-260-size)/2:x+(w-70-size)/2,sy=y+90;
- screenView.frame=CGRectMake(sx,sy,size,size);[self.view viewWithTag:984].frame=CGRectInset(screenView.frame,-10,-10);
- CGFloat nx=wide?x:x,ny=wide?y+150:sy+size+84,nw=wide?176:w;
- for(int i=0;i<6;i++){int cols=wide?2:3;[self.view viewWithTag:910+i].frame=CGRectMake(nx+(i%cols)*(nw+6)/cols,ny+(i/cols)*48,(nw-(cols-1)*6)/cols,44);}
- CGFloat statY=wide?y+88:sy+size+24;[self.view viewWithTag:985].frame=CGRectMake(x,statY,wide?180:w,20);[self.view viewWithTag:986].frame=CGRectMake(x,statY+24,wide?180:w,20);
- CGFloat cmdY=wide?y+b.size.height-48:ny+100;for(int i=0;i<4;i++)[self.view viewWithTag:900+i].frame=CGRectMake(x+i*(wide?180:w)/4,cmdY,(wide?180:w)/4-3,44);
- for(int i=0;i<4;i++)[self.view viewWithTag:930+i].frame=CGRectMake(x+w-50,sy+MAX(0,(size-220)/2)+i*56,50,50);
+ [super viewDidLayoutSubviews];CGRect bounds=self.view.bounds;UIEdgeInsets safe=self.view.safeAreaInsets;CGRect area=UIEdgeInsetsInsetRect(bounds,safe);
+ dashboardScroll.frame=area;
+ CGFloat x=10,w=MAX(120,area.size.width-20),y=10;
+ // Width is never reduced to make room for app chrome. A short landscape
+ // viewport scrolls vertically rather than squeezing or stretching the game.
+ screenView.frame=CGRectMake(x,y,w,w);[self.view viewWithTag:984].frame=CGRectInset(screenView.frame,-6,-6);
+ BOOL outerRail=safe.right>=60;
+ CGFloat after=CGRectGetMaxY(screenView.frame)+14;
+ if(outerRail){CGFloat rw=MIN(56,safe.right-12);CGFloat rx=CGRectGetMaxX(area)+(safe.right-rw)/2;CGFloat top=MAX(safe.top+12,bounds.size.height*.34);CGFloat step=MIN(64,MAX(48,(bounds.size.height-safe.bottom-top-12)/4));for(int i=0;i<4;i++)[self.view viewWithTag:930+i].frame=CGRectMake(rx,top+i*step,rw,MIN(54,step-4));}
+ else {for(int i=0;i<4;i++){UIView*v=[self.view viewWithTag:930+i];v.frame=CGRectMake(area.origin.x+x+i*(w+6)/4,area.origin.y+after,(w-18)/4,44);}after+=56;}
+ // The fallback shortcut row scrolls with the content; the cover rail stays
+ // pinned in the physical right margin below its system indicators.
+ for(int i=0;i<4;i++){UIView*v=[self.view viewWithTag:930+i];if(outerRail){if(v.superview!=self.view)[self.view addSubview:v];}else{CGRect f=v.frame;f.origin.x-=area.origin.x;f.origin.y-=area.origin.y;if(v.superview!=dashboardScroll)[dashboardScroll addSubview:v];v.frame=f;}}
+ [self.view viewWithTag:985].frame=CGRectMake(x,after,w,20);[self.view viewWithTag:986].frame=CGRectMake(x,after+24,w,20);
+ CGFloat ny=after+54;for(int i=0;i<6;i++)[self.view viewWithTag:910+i].frame=CGRectMake(x+(i%3)*(w+6)/3,ny+(i/3)*48,(w-12)/3,44);
+ CGFloat cy=ny+100;for(int i=0;i<4;i++)[self.view viewWithTag:900+i].frame=CGRectMake(x+i*(w+6)/4,cy,(w-18)/4,44);
+ dashboardScroll.contentSize=CGSizeMake(area.size.width,cy+54);
 }
 - (void)shortcut:(UIButton*)sender {if(dialogDepth||self.presentedViewController||!active)return;int slot=0;for(int i=0;i<active->count;i++){Object*o=&active->objects[i];if(isRailShortcut(active,o)&&!o->hidden){if(slot++==sender.tag-930){EventType e={.eType=ctlSelectEvent};e.data.ctlSelect.controlID=o->id;enqueue(e);return;}}}}
 - (void)navigate:(UIButton*)sender {if(dialogDepth||self.presentedViewController||!active||active->menu!=1000)return;int items[]={1100,1102,1103,1110,1108,1106};EventType e={.eType=menuEvent};e.data.menu.itemID=items[sender.tag-910];enqueue(e);}
