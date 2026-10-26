@@ -1,0 +1,10 @@
+/ios/build/
+*.ipa
+*.zip
+/crashes/
+/verification/
+/upstream/
+/pumpkin-reference/
+*.log
+.DS_Store
+__pycache__/
