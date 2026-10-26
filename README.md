@@ -2,7 +2,7 @@
 
 Native iPhone/iPad port of Pieter Spronck’s Space Trader 1.2.2, using the original C gameplay and Palm resources with a UIKit compatibility layer. Includes adaptive navigation, the supplied planet icon, and Liquid Glass controls on iOS 26 and later.
 
-Current port release: **1.2.9 (build 10)**. Bundle ID: **com.wireproof.spacetrader**.
+Current port release: **1.2.10 (build 11)**. Bundle ID: **com.wireproof.spacetrader**.
 
 ## Build
 
@@ -42,3 +42,5 @@ Release 1.2.7: all navigation in one scrollable right-hand glass bar; content oc
 Release 1.2.8: chart, ship information, encounter and title screens preserve square geometry inside the tall viewport. Text, artwork and hit testing use the same fitted rectangle. Other forms retain adaptive vertical spacing. Blank shortcut slots and dividers collapse, and the navigation rail returns to its top when the active form changes.
 
 Release 1.2.9: Commander, Bank and Menu occupy one three-button bottom row. Help remains in Menu. The right bar retains shortcuts, Cargo/Dock/Equipment/Charts and paging. Ship information moves the original sprite into a separate proportional artwork area beneath the square stats panel; short viewports scroll to expose it.
+
+Release 1.2.10: compact dark Liquid Glass navigation with SF Symbols, short captions, white controls and blue selection accents. Dark material fallback on older iOS. Toolbar height follows visible content. Ship preview and three-button bottom row retained; no emulated Palm hardware or Graffiti area.
