@@ -13,10 +13,11 @@ static void beginSimulatorTests(void){if([NSProcessInfo.processInfo.arguments co
  case 5: if(active->id!=SellCargoForm)break;testScreenshot(@"03-sell");if(good>=0)testControl(SellCargoAll0Button+good);stage++;break;
  case 6: report[@"sell_cargo"]=@(good>=0&&Ship.Cargo[good]==0&&Credits>before);before=Credits;SaveGame(1);Credits=0;LoadGame(1);report[@"snapshot_restore"]=@(Credits==before);SaveGame(0);Credits=0;LoadGame(0);report[@"autosave_restore"]=@(Credits==before);testMenu(MenuCommandBank);stage++;break;
  case 7: if(active->id!=BankForm)break;testScreenshot(@"04-bank");testMenu(MenuCommandShipYard);stage++;break;
- case 8: if(active->id!=ShipYardForm)break;testScreenshot(@"05-shipyard");testMenu(MenuCommandBuyEquipment);stage++;break;
+ case 8: if(active->id!=ShipYardForm)break;testScreenshot(@"05-shipyard");SelectedShipType=Ship.Type;CurForm=ShiptypeInfoForm;FrmGotoForm(CurForm);stage=80;break;
+ case 80: if(active->id!=ShiptypeInfoForm)break;testScreenshot(@"05b-ship-info");{CGRect v=gameViewport(screenView.bounds.size);report[@"ship_aspect_preserved"]=@(fabs(v.size.width-v.size.height)<.01);report[@"empty_shortcuts_collapsed"]=@([controller.view viewWithTag:910].frame.origin.y<20);}testMenu(MenuCommandBuyEquipment);stage=9;break;
  case 9: if(active->id!=BuyEquipmentForm)break;testScreenshot(@"06-equipment");testMenu(MenuCommandGalacticChart);stage++;break;
  case 10: if(active->id!=GalacticChartForm)break;testScreenshot(@"07-galaxy");testMenu(MenuCommandShortRangeChart);stage++;break;
- case 11: if(active->id!=WarpForm)break;testScreenshot(@"08-range");report[@"navigation_screens"]=@YES;report[@"systems"]=@(MAXSOLARSYSTEM);testMenu(MenuCommandCommanderStatus);stage++;break;
+ case 11: if(active->id!=WarpForm)break;testScreenshot(@"08-range");{CGRect v=gameViewport(screenView.bounds.size);report[@"map_aspect_preserved"]=@(fabs(v.size.width-v.size.height)<.01);}report[@"navigation_screens"]=@YES;report[@"systems"]=@(MAXSOLARSYSTEM);testMenu(MenuCommandCommanderStatus);stage++;break;
  case 12: if(active->id!=CommanderStatusForm)break;testScreenshot(@"09-commander");testMenu(MenuCommandBuyCargo);stage++;break;
  case 13: if(active->id!=BuyCargoForm)break;testControl(BuyCargoQty0Button+good);stage++;break;
  case 14: if(active->id!=AmountToBuyForm)break;{Object*o=FrmGetObjectPtr(active,FrmGetObjectIndex(active,AmountToBuyToBuyField));copy(o->handle,@"1",handleSize(o->handle));testScreenshot(@"10-quantity");testControl(AmountToBuyOKButton);}stage++;break;
