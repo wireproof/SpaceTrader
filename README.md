@@ -71,3 +71,7 @@ The original game engine and save format remain. This revision does not implemen
 ### 1.4.1 — viewport fit
 
 The wide overview fits its two panel rows above the footer. Market, system/dock and selected-target contents scroll within their panels, with offsets retained on redraw. Empty targets use a compact panel on narrow screens. Ship and commander information rows are denser so ship artwork fits beneath the information. Simulator checks include an 860 x 465 point overview fit assertion and the original gameplay/save suite.
+
+### 1.5.0 — focused navigation and HD fleet
+
+Includes ten transparent remastered normal-hull ship illustrations, used by the catalog, ship preview and matching encounter sprites. Original damaged/shielded artwork is retained. Market headings and system actions stay outside their scrolling content. Cover navigation separates market from system/dock services; Yard opens dock services directly. The native ship catalog has thumbnails, original-engine purchase actions, and a side-by-side detail pane on wide screens. Small charts show fewer labels and their header opens the full chart. The original rules and save format remain unchanged. Physical delivery is install-only at the user's request.
