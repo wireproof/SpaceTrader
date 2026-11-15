@@ -2,7 +2,7 @@
 
 Native iPhone/iPad port of Pieter Spronck’s Space Trader 1.2.2, using the original C gameplay and Palm resources with a UIKit compatibility layer. Includes adaptive navigation, the supplied planet icon, and Liquid Glass controls on iOS 26 and later.
 
-Current port release: **1.3.0 (build 13)**. Bundle ID: **com.wireproof.spacetrader**.
+Current port release: **1.3.1 (build 13)**. Bundle ID: **com.wireproof.spacetrader**.
 
 ## Build
 
@@ -48,7 +48,7 @@ Release 1.2.10: compact dark Liquid Glass navigation with SF Symbols, short capt
 Release 1.2.11: follows system appearance, including native backgrounds, labels, menus, glass navigation and classic game canvas. Neutral canvas colors are mapped for dark contrast; ship preview retains original colors. Theme changes refresh without relaunch. Hardware-style arrows are removed; previous/next page or system actions remain under Menu > Paging.
 
 
-## Native presentation — 1.3.0 (build 13)
+## Native presentation — 1.3.1 (build 13)
 
 The visible Palm bitmap display is replaced by UIKit screens in `ios/NativeScreens.inc`: native cargo rows and trade controls, adaptive information/action cards, native input prompts, proportional ship previews, and vector charts with native star/wormhole targets. Wide layouts add commander/ship context and a nearby-systems panel beside the active screen. Compact layouts scroll naturally and preserve the Duo rail plus three-button footer. System light/dark colors are used throughout.
 
@@ -57,3 +57,7 @@ The original C rules and binary save layout remain. The compatibility canvas sti
 Reference examined: user-supplied SpaceTrader201.zip, including Windows documentation and a REA static inspection of SpaceTrader.exe. REA identified assembly version 2.1.3146.26288, SHA-256 b61fdfc7094d8f3a3ed2a1019c13f1e46aa9d90e64e19de461a442abf44e3395. It did not execute the Windows application. No Windows executable, save data, or external artwork is redistributed here.
 
 Validation covers native trade actions, quantity dialogs, ship/commander/equipment navigation, native map target selection, travel/encounters, save/restore, and fresh-process restore in isolated simulator data. Visual checks use the Duo simulator and a larger iPad viewport; physical-device testing remains separate. Release built with SDK 27.2.
+
+### 1.3.1 layout refinement
+
+Continuous narrative text reflows into a single card. Charts use the main content width without the duplicate commander panel. The right rail shows one set of four destinations, with additional actions available through Menu. Simulator trade, navigation, encounter and save checks passed.
