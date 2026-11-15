@@ -67,3 +67,7 @@ Continuous narrative text reflows into a single card. Charts use the main conten
 System, buy, sell, and shipyard destinations now share a responsive overview inspired by the supplied Windows screenshots. Wide layouts put system/dock information beside a combined cargo market, with galaxy, nearby, and destination panels below. Narrow layouts stack those panels and use larger commodity action rows. Panels scroll when needed to preserve touch targets. Stars select a destination; Review course opens the existing travel flow. Quantity dialogs and special events appear above a dimmed overview.
 
 The original game engine and save format remain. This revision does not implement Windows-only target-price comparison columns or replace every secondary screen. Simulator verification covers combined buy/sell controls, destination panel, compact event presentation, navigation, encounters, travel and save restoration. Physical appearance requires device review.
+
+### 1.4.1 — viewport fit
+
+The wide overview fits its two panel rows above the footer. Market, system/dock and selected-target contents scroll within their panels, with offsets retained on redraw. Empty targets use a compact panel on narrow screens. Ship and commander information rows are denser so ship artwork fits beneath the information. Simulator checks include an 860 x 465 point overview fit assertion and the original gameplay/save suite.
