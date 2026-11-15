@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Flea",
+    "source_id": 2200,
+    "prompt": "Edit target: the attached original Space Trader Flea ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "flea.png"
+  },
+  {
+    "name": "Gnat",
+    "source_id": 2600,
+    "prompt": "Edit target: the attached original Space Trader Gnat ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "gnat.png"
+  },
+  {
+    "name": "Firefly",
+    "source_id": 3000,
+    "prompt": "Edit target: the attached original Space Trader Firefly ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "firefly.png"
+  },
+  {
+    "name": "Mosquito",
+    "source_id": 3400,
+    "prompt": "Edit target: the attached original Space Trader Mosquito ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "mosquito.png"
+  },
+  {
+    "name": "Bumblebee",
+    "source_id": 3800,
+    "prompt": "Edit target: the attached original Space Trader Bumblebee ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "bumblebee.png"
+  },
+  {
+    "name": "Beetle",
+    "source_id": 4200,
+    "prompt": "Edit target: the attached original Space Trader Beetle ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "beetle.png"
+  },
+  {
+    "name": "Hornet",
+    "source_id": 4600,
+    "prompt": "Edit target: the attached original Space Trader Hornet ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "hornet.png"
+  },
+  {
+    "name": "Grasshopper",
+    "source_id": 5000,
+    "prompt": "Edit target: the attached original Space Trader Grasshopper ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "grasshopper.png"
+  },
+  {
+    "name": "Termite",
+    "source_id": 5400,
+    "prompt": "Edit target: the attached original Space Trader Termite ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "termite.png"
+  },
+  {
+    "name": "Wasp",
+    "source_id": 5800,
+    "prompt": "Edit target: the attached original Space Trader Wasp ship sprite. Remaster and upscale this exact ship as a high-resolution 1024x1024 transparent PNG game icon. Preserve the original top-down orthographic view, nose pointing right, silhouette, proportions, distinctive components, primary colors and accent colors. Replace coarse pixels with crisp smooth edges and restrained detailed metallic panel shading. Faithful classic-game HD remaster, not a different spaceship, no new wings, no perspective rotation, no text, no border, no cast shadow, no background or white rectangle. Center the entire ship with 12 percent transparent margin, fully visible. Keep fine detailing subordinate to the recognizable original design.",
+    "size": [
+      1254,
+      1254
+    ],
+    "file": "wasp.png"
+  }
+]
