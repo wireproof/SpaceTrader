@@ -1,0 +1,46 @@
+{
+  "generator": "Built-in image_gen",
+  "reference": "windows-equipment-sheet.png; ship-hd-1.png style reference",
+  "assets": [
+    {
+      "file": "Resources/equipment-hd-0.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Pulse laser: slim silver barrel with yellow charge strips, muzzle right, sheet cell row1 column1. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    },
+    {
+      "file": "Resources/equipment-hd-1.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Beam laser: silver orange charge strips and angular middle fin, muzzle right, row1 column2. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    },
+    {
+      "file": "Resources/equipment-hd-2.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Military laser: heavy silver red triple barrel segments, muzzle right, row1 column3. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    },
+    {
+      "file": "Resources/equipment-hd-3.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Energy shield: small silver emitter under translucent blue energy dome, row2 column3. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    },
+    {
+      "file": "Resources/equipment-hd-4.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Reflective shield: silver emitter under layered strong blue reflective dome, row2 column4. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    },
+    {
+      "file": "Resources/equipment-hd-5.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Five extra cargo bays: metallic teal rectangular cargo module five compartment panels, row3 column2. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    },
+    {
+      "file": "Resources/equipment-hd-6.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Auto-repair system: dark metallic console with prominent yellow wrench symbol, row3 column3. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    },
+    {
+      "file": "Resources/equipment-hd-7.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Navigating system: dark metallic console with cyan directional arrow, row3 column4. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    },
+    {
+      "file": "Resources/equipment-hd-8.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Targeting system: dark metallic console with glowing red target reticle, row4 column1. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    },
+    {
+      "file": "Resources/equipment-hd-9.png",
+      "prompt": "Remaster a single Space Trader equipment icon: Cloaking device: dark spacecraft silhouette partially fading inside subtle blue energy field, row4 column2. Image1 is original sprite sheet identity reference; image2 is approved HD ship style reference only. Match crisp beveled metallic game illustration, polished panels, restrained luminous accents, clear silhouette at small size. Center the single item filling 80% of a square canvas, fully visible. Actual transparent background. No text, labels, frame, watermark, scenery or sprite sheet. Preserve original equipment identity and colors; create detailed high-resolution artwork."
+    }
+  ]
+}
