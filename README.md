@@ -81,3 +81,7 @@ Includes ten transparent remastered normal-hull ship illustrations, used by the 
 Buy and Sell shortcuts now open distinct cargo actions. The overview retains its combined market. Landscape ship information places the unchanged HD artwork beside the statistics, while portrait keeps it underneath. The content area gains 20 points of height, chart labels stay within panel edges, and unused cover dock space displays the current ship. The original engine and save format are unchanged.
 
 Simulator checks cover distinct Buy/Sell controls, trading, travel, encounters, save restoration, and the enlarged landscape artwork. Device delivery is install-only; physical visual confirmation remains with the user.
+
+### 1.5.2 (build 19)
+
+Options now uses native labeled switches with scrolling settings and pinned Done/page-navigation buttons. System details and action titles are larger; standalone generic action buttons have a capped width. The layouts, HD artwork, original rules, and save format are retained. Simulator checks verify switch state reaches the original options model, both options pages open and close, and existing trading/travel/save tests pass. Delivery remains install-only on Duo.

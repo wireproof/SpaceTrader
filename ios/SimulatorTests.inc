@@ -29,7 +29,10 @@ static void beginSimulatorTests(void){if([NSProcessInfo.processInfo.arguments co
  case 18: if(active->id==EncounterForm){testScreenshot(@"12-encounter");int choices[]={EncounterIgnoreButton,EncounterSubmitButton,EncounterFleeButton};for(int i=0;i<3;i++){Object*o=FrmGetObjectPtr(active,FrmGetObjectIndex(active,choices[i]));if(o&&!o->hidden){testControl(choices[i]);break;}}report[@"encounter_rendered"]=@YES;}else if(COMMANDER.CurSystem!=startSystem&&active->id==SystemInformationForm){report[@"travel"]=@(Days==1&&Ship.Fuel<startFuel);testScreenshot(@"13-arrival");stage=20;}break;
  case 20: SaveGame(0);CURSYSTEM.Special=LOTTERYWINNER;CurForm=SpecialEventForm;FrmGotoForm(CurForm);stage=21;break;
  case 21: if(active->id!=SpecialEventForm)break;testScreenshot(@"14-lottery");report[@"event_overlay"]=@(nativeSurface.subviews.lastObject.frame.size.height<nativeSurface.bounds.size.height);LoadGame(0);CurForm=SystemInformationForm;FrmGotoForm(CurForm);stage=22;break;
- case 22: report[@"finished"]=@YES;[t invalidate];break;
+ case 22: testMenu(MenuGameOptions);stage=23;break;
+ case 23: if(active->id!=OptionsForm)break;{UISwitch*b=(UISwitch*)[nativeSurface viewWithTag:30000+OptionsAutoFuelCheckbox];report[@"native_options_switch"]=@([b isKindOfClass:UISwitch.class]);before=AutoFuel;[b setOn:!b.on];[b sendActionsForControlEvents:UIControlEventValueChanged];testScreenshot(@"15-options");testControl(OptionsOptions2Button);}stage=24;break;
+ case 24: if(active->id!=Options2Form)break;report[@"options_toggle_saved"]=@(AutoFuel!=before);testScreenshot(@"16-options-more");testControl(Options2ConeButton);stage=25;break;
+ case 25: if(dialogDepth)break;report[@"finished"]=@YES;[t invalidate];break;
  }
  [report addEntriesFromDictionary:@{@"stage":@(stage),@"form":@(active?active->id:0),@"credits":@(Credits),@"save_directory":saveDirectory}];[[NSJSONSerialization dataWithJSONObject:report options:NSJSONWritingPrettyPrinted error:nil] writeToFile:[saveDirectory stringByAppendingPathComponent:@"test-report.json"] atomically:YES];
  }];}
