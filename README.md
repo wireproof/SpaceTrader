@@ -89,3 +89,7 @@ Options now uses native labeled switches with scrolling settings and pinned Done
 ### 1.5.3 (build 20)
 
 Portrait trading uses one title, compact commodity rows, a cargo/cash summary, and plain availability text instead of disabled button blocks. Portrait docking combines the current ship artwork, ship status, and service actions above system details. Landscape retains its dashboard with enough height for all seven system details and spaced label/value columns. Ship catalog specifications use aligned rows. The approved HD assets and original game rules/save format are unchanged.
+
+### 1.5.4 (build 21)
+
+Yard is a dedicated shipyard in both orientations, without cargo trading or charts. Current ship information displays fuel and hull against actual capacity plus segmented cargo usage. Ship catalogs use responsive tiles with HD artwork and quick specs; Info opens the detailed specification view and purchase control. Buy Equipment uses the same tile/detail flow with original Windows 2.01 equipment illustrations recovered from the user-supplied executable (see ios/equipment-art-provenance.json). Equipment illustrations retain their original pixel art; approved remastered ship files are unchanged. Original purchase handlers, availability rules and saves remain authoritative.
