@@ -85,3 +85,7 @@ Simulator checks cover distinct Buy/Sell controls, trading, travel, encounters, 
 ### 1.5.2 (build 19)
 
 Options now uses native labeled switches with scrolling settings and pinned Done/page-navigation buttons. System details and action titles are larger; standalone generic action buttons have a capped width. The layouts, HD artwork, original rules, and save format are retained. Simulator checks verify switch state reaches the original options model, both options pages open and close, and existing trading/travel/save tests pass. Delivery remains install-only on Duo.
+
+### 1.5.3 (build 20)
+
+Portrait trading uses one title, compact commodity rows, a cargo/cash summary, and plain availability text instead of disabled button blocks. Portrait docking combines the current ship artwork, ship status, and service actions above system details. Landscape retains its dashboard with enough height for all seven system details and spaced label/value columns. Ship catalog specifications use aligned rows. The approved HD assets and original game rules/save format are unchanged.
