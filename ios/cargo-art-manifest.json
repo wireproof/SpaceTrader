@@ -1,0 +1,46 @@
+{
+  "generator": "Built-in image_gen",
+  "style_reference": "Resources/equipment-hd-5.png",
+  "assets": [
+    {
+      "file": "Resources/cargo-hd-0.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Water: compact blue drinking-water canister with cyan liquid window and droplet emblem. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    },
+    {
+      "file": "Resources/cargo-hd-1.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Furs: folded warm brown fur pelts secured by a dark metallic shipping strap. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    },
+    {
+      "file": "Resources/cargo-hd-2.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Food: open compact ration crate with colorful food packs and green produce. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    },
+    {
+      "file": "Resources/cargo-hd-3.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Ore: chunky iron and copper mineral rocks in small reinforced industrial tray. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    },
+    {
+      "file": "Resources/cargo-hd-4.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Games: futuristic handheld game console with violet display and simple buttons. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    },
+    {
+      "file": "Resources/cargo-hd-5.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Firearms: compact futuristic gun shipment case with a single sci-fi blaster secured inside. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    },
+    {
+      "file": "Resources/cargo-hd-6.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Medicine: white and teal medical supply case with green medical plus symbol and two small vials. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    },
+    {
+      "file": "Resources/cargo-hd-7.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Machines: compact industrial machinery assembly with gears and yellow safety accents. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    },
+    {
+      "file": "Resources/cargo-hd-8.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Narcotics: fictional violet contraband cargo capsule case with sealed purple crystal canisters, no real drug branding. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    },
+    {
+      "file": "Resources/cargo-hd-9.png",
+      "prompt": "Create one Space Trader cargo inventory icon: Robots: friendly compact silver utility robot with cyan eyes and articulated arms. Reference image is style guidance: polished beveled metallic sci-fi game artwork, crisp readable silhouette, restrained luminous accents. Square high resolution icon, object fills 85% canvas, centered fully visible, actual transparent background. No text, labels, backdrop, border, watermark or sprite sheet. Readable at 40 pixels. Cohesive with remastered spaceship equipment."
+    }
+  ]
+}

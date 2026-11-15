@@ -2,7 +2,7 @@
 
 Native iPhone/iPad port of Pieter Spronck’s Space Trader 1.2.2, using the original C gameplay and Palm resources with a UIKit compatibility layer. Includes adaptive navigation, the supplied planet icon, and Liquid Glass controls on iOS 26 and later.
 
-Current port release: **1.5.5 (build 22)**. Bundle ID: **com.wireproof.spacetrader**.
+Current port release: **1.5.6 (build 23)**. Bundle ID: **com.wireproof.spacetrader**.
 
 ## Build
 
@@ -97,3 +97,7 @@ Yard is a dedicated shipyard in both orientations, without cargo trading or char
 ### 1.5.5 (build 22)
 
 Shipyard now shows occupied weapon, shield, gadget and crew capacity with segmented indicators, including a compact two-column portrait panel. Buy/Sell cargo has a persistent cargo-capacity meter and free-space summary. Current Ship now presents HD ship art, live fuel/hull/cargo gauges, equipment capacity and an illustrated installed loadout. All ten standard equipment icons are remastered using built-in image generation; prompts and asset paths are in `ios/equipment-hd-manifest.json`. Approved ship artwork, original game actions and save format are unchanged. Simulator checks cover the current-ship view, live slot counts, trade, travel, options and save/restore. Duo delivery is install-only.
+
+### 1.5.6 (build 23)
+
+Buy and Sell now show ten themed cargo illustrations beside commodity names, with unchanged trade actions and compact row sizing. Small semantic symbols accompany ship gauges, dashboard headings and service/navigation actions where space permits. Removed the commander explanatory note from Equipment & Crew. Approved ship and equipment art is retained. Cargo assets are generated with built-in image generation; prompts and file mappings are in `ios/cargo-art-manifest.json`. Original rules and save format are unchanged.
