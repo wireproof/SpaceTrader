@@ -72,3 +72,7 @@ Shipyard now shows occupied weapon, shield, gadget and crew capacity with segmen
 ### 1.5.6 (build 23)
 
 Buy and Sell now show ten themed cargo illustrations beside commodity names, with unchanged trade actions and compact row sizing. Small semantic symbols accompany ship gauges, dashboard headings and service/navigation actions where space permits. Removed the commander explanatory note from Equipment & Crew. Approved ship and equipment art is retained. Cargo assets are generated with built-in image generation; prompts and file mappings are in `ios/cargo-art-manifest.json`. Original rules and save format are unchanged.
+
+### 1.5.7 (build 24)
+
+Adds a native app-icon picker to Menu and Options. Includes Classic, three remastered green-planet designs, and all ten ship designs with consistent dark teal space backgrounds. iPhone and iPad alternate-icon declarations and appropriately sized resources are generated from a shared manifest. The current selection is read from iOS; failures are shown without changing saves. Approved in-game artwork and gameplay remain unchanged.

@@ -22,6 +22,18 @@ for p in (root/'Resources').iterdir():shutil.copy2(p,app/p.name)
 info=dict(CFBundleExecutable='SpaceTrader',CFBundleIdentifier=version['bundle_id'],CFBundleName='Space Trader',CFBundleDisplayName='Space Trader',CFBundleVersion=str(version['build']),CFBundleShortVersionString=version['version'],CFBundlePackageType='APPL',MinimumOSVersion='16.0',LSRequiresIPhoneOS=True,UIDeviceFamily=[1,2],UILaunchScreen={},UIStatusBarStyle='UIStatusBarStyleDefault',UISupportedInterfaceOrientations=['UIInterfaceOrientationPortrait','UIInterfaceOrientationLandscapeLeft','UIInterfaceOrientationLandscapeRight'],UIRequiresFullScreen=False,CFBundleIcons={'CFBundlePrimaryIcon':{'CFBundleIconFiles':['AppIcon120','AppIcon180']}},LSSupportsOpeningDocumentsInPlace=True,UIFileSharingEnabled=True,ITSAppUsesNonExemptEncryption=False)
 info['UIApplicationSceneManifest']={'UIApplicationSupportsMultipleScenes':False,'UISceneConfigurations':{'UIWindowSceneSessionRoleApplication':[{'UISceneConfigurationName':'Space Trader','UISceneDelegateClassName':'STClassicSceneDelegate'}]}}
 info['CFBundleIcons~ipad']={'CFBundlePrimaryIcon':{'CFBundleIconFiles':['AppIcon120','AppIcon152','AppIcon167','AppIcon180']}}
+# Loose icon resources are used by this clang-based build (no Xcode asset catalog).
+icons=json.loads((root/'app-icons.json').read_text())
+alternates={}
+for icon in icons:
+ if not icon['name']:continue
+ source=root.parent/icon['source'];prefix='STIcon'+icon['name']
+ for suffix,size in [('60@2x',120),('60@3x',180),('76',76),('76@2x',152),('83.5@2x',167)]:
+  subprocess.run(['sips','-z',str(size),str(size),str(source),'--out',str(app/(prefix+suffix+'.png'))],check=True,stdout=subprocess.DEVNULL)
+ alternates[icon['name']]={'CFBundleIconFiles':[prefix+'60',prefix+'76',prefix+'83.5'],'UIPrerenderedIcon':True}
+info['CFBundleIcons']['CFBundleAlternateIcons']=alternates
+info['CFBundleIcons~ipad']['CFBundleAlternateIcons']=alternates
+(app/'app-icons.json').write_text(json.dumps([{k:v for k,v in x.items() if k!='source'} for x in icons]))
 (app/'Info.plist').write_bytes(plistlib.dumps(info))
 subprocess.run(['codesign','--force','--sign','-','--timestamp=none',str(app)],check=True)
 if mode!='simulator':

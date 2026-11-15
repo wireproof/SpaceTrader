@@ -1,0 +1,85 @@
+[
+  {
+    "name": "",
+    "title": "Classic",
+    "preview": "AppIcon180.png"
+  },
+  {
+    "name": "PlanetEmerald",
+    "title": "Emerald",
+    "source": "artwork/app-icon-remastered/SpaceTrader-AppIcon-v2.png",
+    "preview": "STIconPlanetEmerald60@3x.png"
+  },
+  {
+    "name": "PlanetOrbital",
+    "title": "Orbital",
+    "source": "artwork/app-icon-remastered/SpaceTrader-AppIcon-v3.png",
+    "preview": "STIconPlanetOrbital60@3x.png"
+  },
+  {
+    "name": "PlanetNebula",
+    "title": "Nebula",
+    "source": "artwork/app-icon-remastered/SpaceTrader-AppIcon-v4.png",
+    "preview": "STIconPlanetNebula60@3x.png"
+  },
+  {
+    "name": "ShipFlea",
+    "title": "Flea",
+    "source": "artwork/app-icon-remastered/Flea.png",
+    "preview": "STIconShipFlea60@3x.png"
+  },
+  {
+    "name": "ShipGnat",
+    "title": "Gnat",
+    "source": "artwork/app-icon-remastered/Gnat.png",
+    "preview": "STIconShipGnat60@3x.png"
+  },
+  {
+    "name": "ShipFirefly",
+    "title": "Firefly",
+    "source": "artwork/app-icon-remastered/Firefly.png",
+    "preview": "STIconShipFirefly60@3x.png"
+  },
+  {
+    "name": "ShipMosquito",
+    "title": "Mosquito",
+    "source": "artwork/app-icon-remastered/Mosquito.png",
+    "preview": "STIconShipMosquito60@3x.png"
+  },
+  {
+    "name": "ShipBumblebee",
+    "title": "Bumblebee",
+    "source": "artwork/app-icon-remastered/Bumblebee.png",
+    "preview": "STIconShipBumblebee60@3x.png"
+  },
+  {
+    "name": "ShipBeetle",
+    "title": "Beetle",
+    "source": "artwork/app-icon-remastered/Beetle.png",
+    "preview": "STIconShipBeetle60@3x.png"
+  },
+  {
+    "name": "ShipHornet",
+    "title": "Hornet",
+    "source": "artwork/app-icon-remastered/Hornet.png",
+    "preview": "STIconShipHornet60@3x.png"
+  },
+  {
+    "name": "ShipGrasshopper",
+    "title": "Grasshopper",
+    "source": "artwork/app-icon-remastered/Grasshopper.png",
+    "preview": "STIconShipGrasshopper60@3x.png"
+  },
+  {
+    "name": "ShipTermite",
+    "title": "Termite",
+    "source": "artwork/app-icon-remastered/Termite.png",
+    "preview": "STIconShipTermite60@3x.png"
+  },
+  {
+    "name": "ShipWasp",
+    "title": "Wasp",
+    "source": "artwork/app-icon-remastered/Wasp.png",
+    "preview": "STIconShipWasp60@3x.png"
+  }
+]

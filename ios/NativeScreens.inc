@@ -34,7 +34,8 @@ static void nativeOptions(CGFloat width,CGFloat height,CGPoint savedOffset){
  UIView*shade=[UIView new];shade.frame=CGRectMake(0,0,width,height);shade.backgroundColor=[UIColor.blackColor colorWithAlphaComponent:.28];[nativeSurface addSubview:shade];
  CGFloat mw=MIN(width-24,560),mh=MIN(height-24,720);UIView*sheet=nativeCard(nativeSurface,CGRectMake((width-mw)/2,(height-mh)/2,mw,mh));sheet.clipsToBounds=YES;
  nativeLabel(sheet,active->id==OptionsForm?@"Gameplay options":@"More options",CGRectMake(16,10,mw-32,34),YES).font=[UIFont systemFontOfSize:22 weight:UIFontWeightSemibold];
- UIScrollView*list=[UIScrollView new];list.tag=41004;list.frame=CGRectMake(0,52,mw,mh-112);[sheet addSubview:list];CGFloat y=4;
+ UIScrollView*list=[UIScrollView new];list.tag=41004;list.frame=CGRectMake(0,52,mw,mh-112);[sheet addSubview:list];CGFloat y=58;
+ nativeButton(list,@"Choose app icon",CGRectMake(16,4,mw-32,44),^{showAppIconPicker();});
  NSMutableArray*controls=[NSMutableArray new];for(int i=0;i<active->count;i++){Object*o=&active->objects[i];if(!o->hidden&&(o->type==0||o->type==1)) [controls addObject:@(i)];}
  [controls sortUsingComparator:^NSComparisonResult(NSNumber*a,NSNumber*b){Object*aa=&active->objects[a.intValue],*bb=&active->objects[b.intValue];int d=aa->y-bb->y;if(!d)d=aa->x-bb->x;return d<0?NSOrderedAscending:d>0?NSOrderedDescending:NSOrderedSame;}];
  for(NSNumber*n in controls){Object*o=&active->objects[n.intValue];if(o->id==OptionsDoneButton||o->id==OptionsOptions2Button||o->id==Options2ConeButton||o->id==Options2Options1Button)continue;
