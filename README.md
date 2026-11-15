@@ -75,3 +75,9 @@ The wide overview fits its two panel rows above the footer. Market, system/dock 
 ### 1.5.0 — focused navigation and HD fleet
 
 Includes ten transparent remastered normal-hull ship illustrations, used by the catalog, ship preview and matching encounter sprites. Original damaged/shielded artwork is retained. Market headings and system actions stay outside their scrolling content. Cover navigation separates market from system/dock services; Yard opens dock services directly. The native ship catalog has thumbnails, original-engine purchase actions, and a side-by-side detail pane on wide screens. Small charts show fewer labels and their header opens the full chart. The original rules and save format remain unchanged. Physical delivery is install-only at the user's request.
+
+### 1.5.1 (build 18)
+
+Buy and Sell shortcuts now open distinct cargo actions. The overview retains its combined market. Landscape ship information places the unchanged HD artwork beside the statistics, while portrait keeps it underneath. The content area gains 20 points of height, chart labels stay within panel edges, and unused cover dock space displays the current ship. The original engine and save format are unchanged.
+
+Simulator checks cover distinct Buy/Sell controls, trading, travel, encounters, save restoration, and the enlarged landscape artwork. Device delivery is install-only; physical visual confirmation remains with the user.
