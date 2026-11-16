@@ -120,3 +120,7 @@ Validation: the final iPad simulator build passed gameplay, native Back, save/re
 Replaces the manually positioned navigation rail with UITabBarController, following WireDRIVE's use of standard system tabs. iOS now owns navigation placement and safe-area allocation, including the Duo system column. Trade, Dock, Warp, Bank and Options share the original game engine through a single contained game controller. Options is a dedicated native destination; Back retains the original game history and gains enough header clearance for its system glass button. Approved artwork and saves are unchanged.
 
 Validation for 1.5.13: Duo and iPad simulator gameplay, native navigation, Options and fresh-process save restoration passed. System screenshots confirmed Duo navigation in the system column and iPad bottom tabs.
+
+## 1.5.14 (31)
+
+Circular glass Back control with a 44-point touch target. Only the Duo cover display is restricted to portrait; the inner display and other devices retain rotation. Display classification uses physical screen dimensions rather than the content window.

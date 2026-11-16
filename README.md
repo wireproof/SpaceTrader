@@ -4,7 +4,7 @@ A native iPhone and iPad adaptation of Pieter Spronck’s Space Trader 1.2.2. Th
 
 ## Current release
 
-**1.5.13 (build 30)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.13).
+**1.5.14 (build 31)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.14).
 
 - Ten ships with a second pass of detailed metallic artwork, ten equipment icons and ten themed cargo icons.
 - Unified Trade screen with buy/sell actions, cargo-capacity indicators and larger commodity artwork.
