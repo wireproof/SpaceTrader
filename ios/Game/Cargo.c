@@ -1284,3 +1284,9 @@ void DisplayDumpCredits( void )
 	FntSetFont( stdFont );
 	DrawChars( SBuf, 118, 64 );
 }
+
+void NativeCargoQuantity(int good, Boolean buying) {
+ if(good<0 || good>=MAXTRADEITEM)return;
+ int amount=buying?GetAmountToBuy(good):GetAmountToSell(good,SELLCARGO);
+ if(amount>0){if(buying)BuyCargo(good,amount,false);else SellCargo(good,amount,SELLCARGO);}
+}

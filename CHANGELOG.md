@@ -133,3 +133,7 @@ Commander and crew share one card; the commander is listed once, with personal a
 ## 1.5.16 (build 33)
 
 Moves the crew occupancy count and capacity bar into the Commander & crew card above the commander details. The Equipment card contains only weapon, shield and gadget slots plus installed equipment, with the vacated space removed. Original crew counting, hiring and dismissal behavior is unchanged.
+
+## 1.5.17 (build 34)
+
+Fixes Warp port actions: News opens a preview before the newspaper purchase action, Special opens the eligible local event or explains its absence, and Crew opens the combined roster. Average prices now has small cargo artwork, target estimates, local buy/sell quantity controls, named direction controls and preserved price-mode switching. Native text and data columns use centered alignment. Corrects original alert substitution numbering so prices appear in newspaper prompts.

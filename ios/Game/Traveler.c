@@ -2920,3 +2920,8 @@ Boolean ExecuteWarpFormHandleEvent(EventPtr eventP)
 	return handled;
 }
 
+
+long NativeAveragePrice(int good, int system) {
+ if(good<0 || good>=MAXTRADEITEM || system<0 || system>=MAXSOLARSYSTEM)return 0;
+ return StandardPrice(good,SolarSystem[system].Size,SolarSystem[system].TechLevel,SolarSystem[system].Politics,SolarSystem[system].Visited?SolarSystem[system].SpecialResources:-1);
+}

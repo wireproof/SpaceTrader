@@ -105,7 +105,7 @@ int LstGetSelection(ControlPtr o){return CtlGetValue(o);}
 void LstSetSelection(ControlPtr o,int n){if(o)o->value=n;}
 void FldSetTextHandle(void*p,Handle h){Object*o=p;if(o){o->handle=h;CtlDrawControl(o);}}
 int FrmDoDialog(FormPtr f){FormPtr previous=active;NSArray*behindText=[textRuns copy];CGImageRef behind=CGBitmapContextCreateImage(canvas);active=f;textRuns=[NSMutableArray new];dialogDepth++;FrmDrawForm(f);int result=f->def;for(;;){EventType e;EvtGetEvent(&e,evtWaitForever);if(f->handler&&f->handler(&e))continue;if(e.eType==ctlSelectEvent){Object*o=FrmGetObjectPtr(f,FrmGetObjectIndex(f,e.data.ctlSelect.controlID));if(o&&o->style==0){result=o->id;break;}}}dialogDepth--;active=previous;CGContextSaveGState(canvas);CGContextTranslateCTM(canvas,0,160);CGContextScaleCTM(canvas,1,-1);CGContextDrawImage(canvas,CGRectMake(0,0,160,160),behind);CGContextRestoreGState(canvas);CGImageRelease(behind);textRuns=[behindText mutableCopy];dirty=YES;return result;}
-int FrmCustomAlert(int n,const char*a,const char*b,const char*c){NSDictionary*d=resources[@"alerts"][[NSString stringWithFormat:@"%d",n]];NSString*msg=d[@"message"]?:[NSString stringWithFormat:@"Message %d",n];NSArray*subs=@[str(a),str(b),str(c)];for(int i=0;i<3;i++)msg=[msg stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"^%d",i] withString:subs[i]];UIAlertController*alert=[UIAlertController alertControllerWithTitle:d[@"title"]?:@"Space Trader" message:msg preferredStyle:UIAlertControllerStyleAlert];__block int result=-1;NSArray*buttons=d[@"buttons"]?:@[@"OK"];for(int i=0;i<buttons.count;i++){[alert addAction:[UIAlertAction actionWithTitle:buttons[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction*x){result=i;}]];}dialogDepth++;flush();[controller presentViewController:alert animated:YES completion:nil];
+int FrmCustomAlert(int n,const char*a,const char*b,const char*c){NSDictionary*d=resources[@"alerts"][[NSString stringWithFormat:@"%d",n]];NSString*msg=d[@"message"]?:[NSString stringWithFormat:@"Message %d",n];NSArray*subs=@[str(a),str(b),str(c)];int base=[msg containsString:@"^0"]?0:1;for(int i=0;i<3;i++)msg=[msg stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"^%d",i+base] withString:subs[i]];UIAlertController*alert=[UIAlertController alertControllerWithTitle:d[@"title"]?:@"Space Trader" message:msg preferredStyle:UIAlertControllerStyleAlert];__block int result=-1;NSArray*buttons=d[@"buttons"]?:@[@"OK"];for(int i=0;i<buttons.count;i++){[alert addAction:[UIAlertAction actionWithTitle:buttons[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction*x){result=i;}]];}dialogDepth++;flush();[controller presentViewController:alert animated:YES completion:nil];
 #if TARGET_OS_SIMULATOR
 if([NSProcessInfo.processInfo.arguments containsObject:@"--selftest"])[NSTimer scheduledTimerWithTimeInterval:.3 repeats:NO block:^(NSTimer*t){result=0;[alert dismissViewControllerAnimated:NO completion:nil];}];
 #endif
@@ -215,6 +215,7 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
 }
 - (void)goBack {
  if(!active||self.presentedViewController||events.count)return;
+ if(nativePortInfo){nativePortInfo=NO;dirty=YES;return;}
  if(nativeOptionsVisible){nativeOptionsVisible=NO;dirty=YES;return;}
  if(catalogDetailOpen){catalogDetailOpen=NO;dirty=YES;return;}if(equipmentSelection>=0&&active->id==BuyEquipmentForm){equipmentSelection=-1;dirty=YES;return;}
  for(int i=0;i<active->count;i++){Object*o=&active->objects[i];NSString*t=[str(o->text) lowercaseString];if(o->type==1&&!o->hidden&&([t isEqual:@"cancel"]||[t isEqual:@"done"]||[t isEqual:@"back"])){nativeControl(o);return;}}
@@ -268,6 +269,7 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
 - (BOOL)tabBarController:(UITabBarController*)tabs shouldSelectViewController:(UIViewController*)viewController {return active&&!dialogDepth&&!events.count&&!controller.presentedViewController&&active->id!=EncounterForm&&active->id!=SpecialEventForm;}
 - (void)tabBarController:(UITabBarController*)tabs didSelectViewController:(UIViewController*)viewController {
  [self attachGame];NSUInteger index=self.selectedIndex;nativeOptionsVisible=index==4;dirty=YES;[nativeSurface setContentOffset:CGPointZero animated:NO];
+ nativePortInfo=NO;
  if(index<4){int commands[]={MenuCommandBuyCargo,MenuCommandShipYard,MenuCommandShortRangeChart,MenuCommandBank};nativeMenu(commands[index]);}
 }
 - (UIViewController*)childViewControllerForStatusBarStyle {return controller;}
