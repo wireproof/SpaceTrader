@@ -1,5 +1,5 @@
 // Shared desktop-style overview, backed by the original game state and actions.
-static int dashboardTarget=-1, pendingForm=0,pendingControl=0;
+static int pendingForm=0,pendingControl=0;
 
 static void dashboardRoute(int menu,int form,int control){pendingForm=form;pendingControl=control;nativeMenu(menu);}
 static void dashboardSelect(int system){dashboardTarget=system;dirty=YES;}
@@ -11,11 +11,11 @@ static void cargoArtwork(UIView*p,int index,CGRect f){UIImageView*im=[[UIImageVi
 static void dashboardMarket(UIView*p,CGRect f){
  UIView*panel=nativeCard(p,f);CGFloat w=f.size.width;BOOL narrow=w<560;
  shipMeter(panel,@"Cargo bays",FilledCargoBays(),TotalCargoBays(),12,w,UIColor.systemOrangeColor,YES);
- UIScrollView*v=[UIScrollView new];v.tag=41001;v.alwaysBounceVertical=YES;v.frame=CGRectMake(0,66,w,MAX(48,f.size.height-74));[panel addSubview:v];CGFloat row=narrow?100:62;v.contentSize=CGSizeMake(w,MAXTRADEITEM*row);
- for(int i=0;i<MAXTRADEITEM;i++){CGFloat y=i*row;cargoArtwork(v,i,CGRectMake(12,y+8,40,40));CGFloat labelW=narrow?w-72:w*.38-64;
- nativeLabel(v,str(Tradeitem[i].Name),CGRectMake(60,y+3,labelW,25),YES).font=[UIFont systemFontOfSize:17 weight:UIFontWeightSemibold];
- UILabel*detail=nativeLabel(v,[NSString stringWithFormat:@"%d aboard · %d available",Ship.Cargo[i],CURSYSTEM.Qty[i]],CGRectMake(60,y+28,labelW,22),NO);detail.font=[UIFont systemFontOfSize:13];detail.textColor=UIColor.secondaryLabelColor;
- CGFloat start=narrow?12:w*.39,aw=(w-start-18)/2,by=y+(narrow?55:8);
+ UIScrollView*v=[UIScrollView new];v.tag=41001;v.alwaysBounceVertical=YES;v.frame=CGRectMake(0,66,w,MAX(48,f.size.height-74));[panel addSubview:v];CGFloat row=narrow?124:MAX(86,MIN(112,(f.size.height-74)/10));v.contentSize=CGSizeMake(w,MAXTRADEITEM*row);
+ for(int i=0;i<MAXTRADEITEM;i++){CGFloat y=i*row;cargoArtwork(v,i,CGRectMake(12,y+8,72,72));CGFloat labelW=narrow?w-108:w*.38-104;
+ nativeLabel(v,str(Tradeitem[i].Name),CGRectMake(96,y+8,labelW,25),YES).font=[UIFont systemFontOfSize:17 weight:UIFontWeightSemibold];
+ UILabel*detail=nativeLabel(v,[NSString stringWithFormat:@"%d aboard · %d available",Ship.Cargo[i],CURSYSTEM.Qty[i]],CGRectMake(96,y+36,labelW,36),NO);detail.font=[UIFont systemFontOfSize:13];detail.textColor=UIColor.secondaryLabelColor;
+ CGFloat start=narrow?12:w*.39,aw=(w-start-18)/2,by=y+(narrow?76:22);
  for(int buy=0;buy<2;buy++){long price=buy?BuyPrice[i]:SellPrice[i];CGFloat x=start+buy*(aw+6),priceW=aw-52;int q=(buy?BuyCargoQty0Button:SellCargoQty0Button)+i,all=(buy?BuyCargoAll0Button:(price>0?SellCargoAll0Button:SellCargoDump0Button))+i;int menu=buy?MenuCommandBuyCargo:MenuCommandSellCargo,form=buy?BuyCargoForm:SellCargoForm;
  NSString*title=price>0?[NSString stringWithFormat:@"%@ %ld cr",buy?@"Buy":@"Sell",price]:(buy?@"No stock":@"No trade");
  UIButton*b=nativeButton(v,title,CGRectMake(x,by,priceW,44),^{dashboardRoute(menu,form,q);});b.tag=30000+q;b.titleLabel.font=[UIFont systemFontOfSize:15 weight:UIFontWeightSemibold];b.enabled=price>0&&(buy?(CURSYSTEM.Qty[i]>0&&FilledCargoBays()<TotalCargoBays()&&Credits>=price):Ship.Cargo[i]>0);
@@ -44,16 +44,9 @@ static void nativeYard(CGFloat width,CGFloat height){CGFloat w=width-24;nativeLa
 static void dashboardTargetPanel(CGRect f){UIScrollView*scroll=[UIScrollView new];scroll.tag=41003;scroll.frame=f;scroll.layer.cornerRadius=16;scroll.clipsToBounds=YES;scroll.backgroundColor=UIColor.secondarySystemGroupedBackgroundColor;[nativeSurface addSubview:scroll];CGFloat h=dashboardTarget<0?110:310;dashboardSystem(scroll,CGRectMake(0,0,f.size.width,h),dashboardTarget,YES);scroll.contentSize=CGSizeMake(f.size.width,h);}
 static void dashboardRender(CGFloat width,CGFloat height){
  if(active->id==ShipYardForm){nativeYard(width,height);return;}
- CGFloat pad=12,gap=12,w=width-24;BOOL wide=w>=660;
- nativeLabel(nativeSurface,@"Trade",CGRectMake(pad,4,w,38),YES).font=[UIFont systemFontOfSize:28 weight:UIFontWeightBold];
- CGFloat marketH=wide?MAX(190,MIN((height-58)*.56,height-272)):MAX(310,MIN(530,height*.56));
- dashboardMarket(nativeSurface,CGRectMake(pad,48,w,marketH));CGFloat y=60+marketH,bottom;
- if(wide){CGFloat cw=(w-2*gap)/3,h=MAX(200,height-y-12);
- dashboardSystem(nativeSurface,CGRectMake(pad,y,cw,h),COMMANDER.CurSystem,NO);
- nativeMap(nativeSurface,CGRectMake(pad+cw+gap,y,cw,h),NO);
- dashboardTargetPanel(CGRectMake(pad+2*(cw+gap),y,cw,h));bottom=y+h+12;
- }else{nativeMap(nativeSurface,CGRectMake(pad,y,w,240),NO);y+=252;
- if(w>=390){CGFloat cw=(w-gap)/2;dashboardSystem(nativeSurface,CGRectMake(pad,y,cw,300),COMMANDER.CurSystem,NO);dashboardTargetPanel(CGRectMake(pad+cw+gap,y,cw,300));bottom=y+312;}
- else{dashboardSystem(nativeSurface,CGRectMake(pad,y,w,290),COMMANDER.CurSystem,NO);y+=302;dashboardTargetPanel(CGRectMake(pad,y,w,300));bottom=y+312;}}
- nativeSurface.contentSize=CGSizeMake(width,MAX(height,bottom));
+ CGFloat w=width-24;
+ nativeLabel(nativeSurface,@"Trade",CGRectMake(12,4,w*.5,38),YES).font=[UIFont systemFontOfSize:28 weight:UIFontWeightBold];
+ UILabel*cash=nativeLabel(nativeSurface,[NSString stringWithFormat:@"%ld credits",Credits],CGRectMake(width*.5,8,width*.5-12,30),YES);cash.textAlignment=NSTextAlignmentRight;
+ dashboardMarket(nativeSurface,CGRectMake(12,48,w,MAX(180,height-60)));
+ nativeSurface.contentSize=CGSizeMake(width,height);
 }

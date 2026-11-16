@@ -4,7 +4,7 @@ A native iPhone and iPad adaptation of Pieter Spronck’s Space Trader 1.2.2. Th
 
 ## Current release
 
-**1.5.10 (build 27)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.10).
+**1.5.11 (build 28)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.11).
 
 - Ten ships with a second pass of detailed metallic artwork, ten equipment icons and ten themed cargo icons.
 - Unified Trade screen with buy/sell actions, cargo-capacity indicators, and nearby-system comparison.
@@ -12,7 +12,7 @@ A native iPhone and iPad adaptation of Pieter Spronck’s Space Trader 1.2.2. Th
 - Responsive ship/equipment tiles and detail views, portrait and landscape layouts, native options and system light/dark appearance.
 - Original trading, travel, combat and save rules retained.
 
-This release combines nearby travel and the galaxy on Warp, and brings commander status, crew management, ship gauges and installed equipment artwork onto one overview. Tap the compact ship-status header or choose Options > Commander & ship to open it. Trade, Dock, Warp, Bank and Options use a right rail on Duo and bottom tabs on other devices. The approved second-remaster artwork and Emerald default icon are preserved. Menu > App icon (also available in Options) offers the full fleet, the other planet designs and Classic. Icon selection is managed by iOS and does not alter game saves. See [CHANGELOG.md](CHANGELOG.md) for previous presentation changes.
+Trade now dedicates the full page to the combined market with larger cargo artwork. Dock combines ship services, installed equipment images, commander details and crew management. Warp presents nearby systems, current/target comparison and the galaxy in that order; selecting a star highlights it without leaving the page. Bank has native balance, loan and insurance cards. Back navigation and a simplified Options menu complete the five-destination layout. Duo navigation uses its right-side safe-area strip; other devices use bottom navigation. The approved second-remaster artwork and Emerald default icon are preserved. Menu > App icon (also available in Options) offers the full fleet, the other planet designs and Classic. Icon selection is managed by iOS and does not alter game saves. See [CHANGELOG.md](CHANGELOG.md) for previous presentation changes.
 
 ## Build and install
 
@@ -39,9 +39,9 @@ Save data remains in `Documents/SpaceTraderClassic-v1`. Keep this folder when up
 
 ## Validation
 
-Build 27 simulator checks cover combined buy/sell, travel from the combined maps, commander/ship/roster composition, device-specific navigation placement, quantity dialogs, options and save restoration. Both simulator suites passed, including fresh-process save restoration. The Duo rail, iPad bottom tabs, combined Warp charts and commander overview were visually reviewed.
+Build 28 passed simulator checks on iPhone Duo and 11-inch iPad Pro for combined trading, the full-page market, merged Dock, Bank, Back navigation, star selection, travel, quantity dialogs, options and save restoration. The updated layouts and navigation were visually reviewed in the simulators.
 
-Installed-app readback confirmed 1.5.10 (27) on the iPhone Duo and 11-inch iPad Pro. Save and preference backup hashes were unchanged. Physical delivery was install-only. Launch, runtime testing and visual confirmation on physical devices are not performed. Simulator checks do not establish physical-device behavior.
+Installed-app readback confirmed 1.5.11 (28) on both physical targets. Save and preference hashes were unchanged. Delivery was install-only: neither physical app was launched, and physical runtime testing and visual confirmation were not performed.
 
 ## Credits and licenses
 

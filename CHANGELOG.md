@@ -92,3 +92,12 @@ Combined buying and selling into one Trade page with commodity artwork and cargo
 - Replaced the compact top commander summary with ship type, cargo, fuel and hull; tapping it opens the combined overview.
 - Matching Trade, Dock, Warp, Bank and Options navigation: right rail on Duo, bottom tabs on other devices.
 - Preserved approved artwork, bundle identity and save format.
+
+## 1.5.11 (build 28)
+
+- Full-page Trade with larger cargo artwork; system information and charts move to Warp.
+- Unified Dock, commander, current ship and crew overview, with installed equipment images below Equipment & crew. Redundant Dock header stats removed.
+- Nearby chart, current and target system comparison, then galaxy. Star selection remains on the page and highlights the target; Review course opens travel details.
+- Native Bank balance, credit and insurance cards retain original transaction rules.
+- Back navigation uses existing cancel/done controls for pending actions and history for navigation; combat cannot be bypassed.
+- Flat Options menu containing game actions and App icon. Duo rail aligns with the system safe-area strip; other devices retain matching bottom navigation.
