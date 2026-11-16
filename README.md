@@ -4,15 +4,15 @@ A native iPhone and iPad adaptation of Pieter Spronck’s Space Trader 1.2.2. Th
 
 ## Current release
 
-**1.5.11 (build 28)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.11).
+**1.5.12 (build 29)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.12).
 
 - Ten ships with a second pass of detailed metallic artwork, ten equipment icons and ten themed cargo icons.
-- Unified Trade screen with buy/sell actions, cargo-capacity indicators, and nearby-system comparison.
+- Unified Trade screen with buy/sell actions, cargo-capacity indicators and larger commodity artwork.
 - Dedicated shipyard and current-ship views with fuel, hull, equipment and crew gauges.
 - Responsive ship/equipment tiles and detail views, portrait and landscape layouts, native options and system light/dark appearance.
 - Original trading, travel, combat and save rules retained.
 
-Trade now dedicates the full page to the combined market with larger cargo artwork. Dock combines ship services, installed equipment images, commander details and crew management. Warp presents nearby systems, current/target comparison and the galaxy in that order; selecting a star highlights it without leaving the page. Bank has native balance, loan and insurance cards. Back navigation and a simplified Options menu complete the five-destination layout. Duo navigation uses its right-side safe-area strip; other devices use bottom navigation. The approved second-remaster artwork and Emerald default icon are preserved. Menu > App icon (also available in Options) offers the full fleet, the other planet designs and Classic. Icon selection is managed by iOS and does not alter game saves. See [CHANGELOG.md](CHANGELOG.md) for previous presentation changes.
+Trade now dedicates the full page to the combined market with larger cargo artwork. Dock combines ship services, installed equipment images, commander details and crew management. Warp presents nearby systems, current/target comparison and the galaxy in that order; selecting a star highlights it without leaving the page. Bank has native balance, loan and insurance cards. A native Back bar and simplified Options menu complete the five-destination layout. Installed equipment is grouped above Manage equipment, commander and crew skills have visual meters, and Warp actions share a consistent bottom alignment. Duo navigation stays at the right within the app safe area, clear of system-owned controls; other devices use bottom navigation. iOS controls the position of time, battery, signal and live activities. The approved second-remaster artwork and Emerald default icon are preserved. Menu > App icon (also available in Options) offers the full fleet, the other planet designs and Classic. Icon selection is managed by iOS and does not alter game saves. See [CHANGELOG.md](CHANGELOG.md) for previous presentation changes.
 
 ## Build and install
 

@@ -101,3 +101,15 @@ Combined buying and selling into one Trade page with commodity artwork and cargo
 - Native Bank balance, credit and insurance cards retain original transaction rules.
 - Back navigation uses existing cancel/done controls for pending actions and history for navigation; combat cannot be bypassed.
 - Flat Options menu containing game actions and App icon. Duo rail aligns with the system safe-area strip; other devices retain matching bottom navigation.
+
+
+## Dock and navigation polish — 1.5.12 (build 29)
+
+- Group installed equipment images inside Equipment & crew, directly above Manage equipment.
+- Present commander and individual crew skills as labeled meters with clear role and hiring information.
+- Align Review course with the current system action row.
+- Remove the redundant ship summary from Trade, Warp and Bank.
+- Use a native navigation bar for Back and keep Duo app navigation inside the safe content area, separate from system-owned status controls. iOS retains control of status-indicator placement.
+- Preserve all approved artwork, game rules and save formats.
+
+Validation: the final iPad simulator build passed gameplay, native Back, save/restore and layout-structure checks; Warp action alignment and the integrated equipment card were visually inspected. Duo simulator installation timed out under host load, so Duo visual validation remains pending. Both physical devices received the update with matching pre/post saved-data hashes; physical launch, runtime and visual testing were not performed.
