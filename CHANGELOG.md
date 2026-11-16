@@ -113,3 +113,10 @@ Combined buying and selling into one Trade page with commodity artwork and cargo
 - Preserve all approved artwork, game rules and save formats.
 
 Validation: the final iPad simulator build passed gameplay, native Back, save/restore and layout-structure checks; Warp action alignment and the integrated equipment card were visually inspected. Duo simulator installation timed out under host load, so Duo visual validation remains pending. Both physical devices received the update with matching pre/post saved-data hashes; physical launch, runtime and visual testing were not performed.
+
+
+## Native system tabs — 1.5.13 (build 30)
+
+Replaces the manually positioned navigation rail with UITabBarController, following WireDRIVE's use of standard system tabs. iOS now owns navigation placement and safe-area allocation, including the Duo system column. Trade, Dock, Warp, Bank and Options share the original game engine through a single contained game controller. Options is a dedicated native destination; Back retains the original game history and gains enough header clearance for its system glass button. Approved artwork and saves are unchanged.
+
+Validation for 1.5.13: Duo and iPad simulator gameplay, native navigation, Options and fresh-process save restoration passed. System screenshots confirmed Duo navigation in the system column and iPad bottom tabs.

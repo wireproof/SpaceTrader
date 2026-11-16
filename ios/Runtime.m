@@ -22,6 +22,8 @@ static BOOL returningBack;
 static int navigationPage(int f){switch(f){case SystemInformationForm:case BuyCargoForm:case SellCargoForm:return BuyCargoForm;case ShipYardForm:case CurrentShipForm:case CommanderStatusForm:case PersonnelRosterForm:return ShipYardForm;case WarpForm:case GalacticChartForm:return WarpForm;case BankForm:case BuyShipForm:case BuyEquipmentForm:case SellEquipmentForm:return f;default:return 0;}}
 
 static UIViewController *controller;
+static UITabBarController *nativeTabs;
+static BOOL nativeOptionsVisible;
 static UIImageView *screenView;
 static UIScrollView *dashboardScroll;
 static UIVisualEffectView *shortcutBar;
@@ -193,17 +195,15 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
 - (void)traitCollectionDidChange:(UITraitCollection*)previous {[super traitCollectionDidChange:previous];if([self.traitCollection hasDifferentColorAppearanceComparedToTraitCollection:previous]){dirty=YES;[self setNeedsStatusBarAppearanceUpdate];}}
 - (UIStatusBarStyle)preferredStatusBarStyle {return self.traitCollection.userInterfaceStyle==UIUserInterfaceStyleDark?UIStatusBarStyleLightContent:UIStatusBarStyleDarkContent;}
 - (void)viewDidLayoutSubviews {
- [super viewDidLayoutSubviews];UIEdgeInsets safe=self.view.safeAreaInsets;CGRect area=UIEdgeInsetsInsetRect(self.view.bounds,safe);BOOL welcome=active&&active->id==MainForm,side=usesSideNavigation(),outer=side&&safe.right>=70,dock=active&&navigationPage(active->id)==ShipYardForm;CGFloat rw=76,mainWidth=welcome||!side||outer?area.size.width:area.size.width-rw-8,header=welcome?0:44,bottom=welcome||side?0:64;
- dashboardScroll.frame=CGRectMake(area.origin.x,area.origin.y,mainWidth,area.size.height-bottom);nativeSurface.frame=CGRectMake(0,header,mainWidth,MAX(100,area.size.height-header-bottom));dashboardScroll.contentSize=dashboardScroll.bounds.size;
- [self.view viewWithTag:989].frame=CGRectMake(0,0,mainWidth,44);[self.view viewWithTag:985].frame=CGRectMake(88,0,mainWidth-100,22);[self.view viewWithTag:986].frame=CGRectMake(88,22,mainWidth-100,18);[self.view viewWithTag:987].hidden=YES;[self.view viewWithTag:988].frame=CGRectMake(88,0,mainWidth-88,44);
- CGFloat railX=outer?CGRectGetMaxX(area)+(safe.right-rw)/2:CGRectGetMaxX(area)-rw,railY=MAX(area.origin.y+6,CGRectGetMaxY(area)-294);
- // Keep app controls inside the content safe area, never in the system-owned status strip.
- if(outer){railX=CGRectGetMaxX(area)-rw;mainWidth=area.size.width-rw-8;dashboardScroll.frame=CGRectMake(area.origin.x,area.origin.y,mainWidth,area.size.height-bottom);nativeSurface.frame=CGRectMake(0,header,mainWidth,MAX(100,area.size.height-header-bottom));[self.view viewWithTag:989].frame=CGRectMake(0,0,mainWidth,44);}
- shortcutBar.frame=side?CGRectMake(railX,railY,rw,MIN(CGRectGetMaxY(area)-railY-6,288)):CGRectMake(area.origin.x+8,CGRectGetMaxY(area)-60,area.size.width-16,60);railScroll.frame=shortcutBar.bounds;
- int tags[]={910,911,913,915,900};CGFloat tw=shortcutBar.bounds.size.width/5;for(int i=0;i<5;i++)[self.view viewWithTag:tags[i]].frame=side?CGRectMake(0,4+i*56,rw,56):CGRectMake(i*tw,2,tw,56);railScroll.contentSize=side?CGSizeMake(rw,288):shortcutBar.bounds.size;dirty=YES;
+ [super viewDidLayoutSubviews];CGRect area=UIEdgeInsetsInsetRect(self.view.bounds,self.view.safeAreaInsets);BOOL welcome=active&&active->id==MainForm;CGFloat header=welcome?0:52;
+ dashboardScroll.frame=area;dashboardScroll.contentSize=area.size;
+ nativeSurface.frame=CGRectMake(0,header,area.size.width,MAX(100,area.size.height-header));
+ [self.view viewWithTag:989].frame=CGRectMake(0,4,area.size.width,44);
+ shortcutBar.hidden=YES;dirty=YES;
 }
 - (void)goBack {
  if(!active||self.presentedViewController||events.count)return;
+ if(nativeOptionsVisible){nativeOptionsVisible=NO;dirty=YES;return;}
  if(catalogDetailOpen){catalogDetailOpen=NO;dirty=YES;return;}if(equipmentSelection>=0&&active->id==BuyEquipmentForm){equipmentSelection=-1;dirty=YES;return;}
  for(int i=0;i<active->count;i++){Object*o=&active->objects[i];NSString*t=[str(o->text) lowercaseString];if(o->type==1&&!o->hidden&&([t isEqual:@"cancel"]||[t isEqual:@"done"]||[t isEqual:@"back"])){nativeControl(o);return;}}
  if(dialogDepth||active->id==EncounterForm||active->id==SpecialEventForm)return;
@@ -221,9 +221,37 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
 - (void)palmTap:(CGPoint)p {if(!active||self.presentedViewController)return;FormPtr f=active;for(int i=f->count-1;i>=0;i--){Object*o=&f->objects[i];CGRect r=CGRectMake(f->x+o->x-1,f->y+o->y-1,o->w+2,o->h+2);if(o->hidden||isRailShortcut(f,o)||!CGRectContainsPoint(r,p))continue;if(o->type==0){UIAlertController*a=[UIAlertController alertControllerWithTitle:@"Enter value" message:nil preferredStyle:UIAlertControllerStyleAlert];[a addTextFieldWithConfigurationHandler:^(UITextField*t){t.text=str(o->handle?:o->text);t.autocorrectionType=UITextAutocorrectionTypeNo;t.keyboardType=(f->id==NewCommanderForm||f->id==FindSystemForm)?UIKeyboardTypeDefault:UIKeyboardTypeNumbersAndPunctuation;}];[a addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];[a addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction*x){NSString*s=a.textFields.firstObject.text;if(o->handle){extern size_t handleSize(Handle);copy(o->handle,s,handleSize(o->handle));}else copy(o->text,s,sizeof(o->text));drawObject(f,o);flush();}]];[self presentViewController:a animated:YES completion:nil];return;}if(o->type==1){if(o->style==3){NSDictionary*fd=resources[@"forms"][[NSString stringWithFormat:@"%d",f->id]];int listID=0;for(NSDictionary*q in fd[@"objects"])if([q[@"type"]intValue]==10&&[q[@"id"]intValue]==o->id)listID=[q[@"list"]intValue];for(NSDictionary*q in fd[@"objects"])if([q[@"type"]intValue]==2&&[q[@"id"]intValue]==listID){Object*list=FrmGetObjectPtr(f,FrmGetObjectIndex(f,listID));UIAlertController*a=[UIAlertController alertControllerWithTitle:@"Choose shortcut" message:nil preferredStyle:UIAlertControllerStyleActionSheet];NSArray*items=q[@"items"];for(int k=0;k<items.count;k++)[a addAction:[UIAlertAction actionWithTitle:items[k] style:UIAlertActionStyleDefault handler:^(UIAlertAction*z){list->value=k;CtlSetLabel(o,[items[k] UTF8String]);flush();}]];[a addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];a.popoverPresentationController.sourceView=screenView;a.popoverPresentationController.sourceRect=CGRectMake(p.x*screenView.bounds.size.width/160,p.y*screenView.bounds.size.height/160,1,1);[self presentViewController:a animated:YES completion:nil];return;}}if(o->style==2){o->value=!o->value;drawObject(f,o);}EventType e={.eType=ctlSelectEvent};e.data.ctlSelect.controlID=o->id;e.data.ctlSelect.on=o->value;enqueue(e);return;}}
  EventType e={.eType=penDownEvent,.penDown=true,.screenX=p.x,.screenY=p.y};enqueue(e);}
 @end
+// Native tab containment lets iOS choose the Duo system column or standard tab bar.
+@interface STGameTabs:UITabBarController<UITabBarControllerDelegate>
+- (void)attachGame;
+@end
+@implementation STGameTabs
+- (void)viewDidLoad {
+ [super viewDidLoad];self.delegate=self;
+ // Keep the requested bottom tabs on iPad; Duo retains its native adaptive column.
+ if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad){if(@available(iOS 17.0,*))self.traitOverrides.horizontalSizeClass=UIUserInterfaceSizeClassCompact;}
+ NSArray*names=@[@"Trade",@"Dock",@"Warp",@"Bank",@"Options"];
+ NSArray*symbols=@[@"arrow.left.arrow.right",@"wrench.and.screwdriver",@"sparkles",@"building.columns",@"gearshape"];
+ NSMutableArray*hosts=[NSMutableArray new];for(int i=0;i<5;i++){UIViewController*v=[UIViewController new];v.view.backgroundColor=UIColor.systemGroupedBackgroundColor;v.tabBarItem=[[UITabBarItem alloc]initWithTitle:names[i] image:[UIImage systemImageNamed:symbols[i]] tag:i];[hosts addObject:v];}
+ self.viewControllers=hosts;self.customizableViewControllers=nil;[self attachGame];
+}
+- (void)attachGame {
+ UIViewController*host=self.selectedViewController;if(!host||controller.parentViewController==host)return;
+ [controller willMoveToParentViewController:nil];[controller.view removeFromSuperview];[controller removeFromParentViewController];
+ [host addChildViewController:controller];controller.view.frame=host.view.bounds;controller.view.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;[host.view addSubview:controller.view];[controller didMoveToParentViewController:host];[controller.view setNeedsLayout];
+}
+- (BOOL)tabBarController:(UITabBarController*)tabs shouldSelectViewController:(UIViewController*)viewController {return active&&!dialogDepth&&!events.count&&!controller.presentedViewController&&active->id!=EncounterForm&&active->id!=SpecialEventForm;}
+- (void)tabBarController:(UITabBarController*)tabs didSelectViewController:(UIViewController*)viewController {
+ [self attachGame];NSUInteger index=self.selectedIndex;nativeOptionsVisible=index==4;dirty=YES;[nativeSurface setContentOffset:CGPointZero animated:NO];
+ if(index<4){int commands[]={MenuCommandBuyCargo,MenuCommandShipYard,MenuCommandShortRangeChart,MenuCommandBank};nativeMenu(commands[index]);}
+}
+- (UIViewController*)childViewControllerForStatusBarStyle {return controller;}
+@end
 static void updateDashboard(void){
  BOOL playing=NameCommander[0]&&active&&active->menu==1000;
- BOOL welcome=active&&(active->id==MainForm||active->id==NewCommanderForm);shortcutBar.hidden=welcome;
+ BOOL welcome=active&&(active->id==MainForm||active->id==NewCommanderForm);shortcutBar.hidden=YES;
+ if(@available(iOS 18.0,*)){nativeTabs.tabBarHidden=welcome;}else nativeTabs.tabBar.hidden=welcome;
+ if(!nativeOptionsVisible&&!dialogDepth){int page=active?navigationPage(active->id):0;NSInteger index=page==BuyCargoForm?0:page==ShipYardForm?1:page==WarpForm?2:page==BankForm?3:-1;if(index>=0&&nativeTabs.selectedIndex!=index){nativeTabs.selectedIndex=index;[(STGameTabs*)nativeTabs attachGame];}}
  for(int i=930;i<=943;i++)[controller.view viewWithTag:i].hidden=YES;
  for(int i=901;i<=903;i++)[controller.view viewWithTag:i].hidden=YES;
  [controller.view viewWithTag:912].hidden=YES;[controller.view viewWithTag:914].hidden=YES;
@@ -253,7 +281,7 @@ size_t handleSize(Handle h){return [handleSizes[[NSValue valueWithPointer:h]] un
 @implementation STClassicSceneDelegate
 - (void)scene:(UIScene*)scene willConnectToSession:(UISceneSession*)session options:(UISceneConnectionOptions*)options {
 if (![scene isKindOfClass:UIWindowScene.class]) return;
-resources=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"resources" ofType:@"json"]] options:0 error:nil];events=[NSMutableArray new];forms=[NSMutableDictionary new];images=[NSMutableDictionary new];handleSizes=[NSMutableDictionary new];saveDirectory=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"SpaceTraderClassic-v1"];[[NSFileManager defaultManager]createDirectoryAtPath:saveDirectory withIntermediateDirectories:YES attributes:nil error:nil];CGColorSpaceRef cs=CGColorSpaceCreateDeviceRGB();canvas=CGBitmapContextCreate(NULL,1600,1600,8,1600*4,cs,kCGImageAlphaPremultipliedLast);CGColorSpaceRelease(cs);CGContextTranslateCTM(canvas,0,1600);CGContextScaleCTM(canvas,10,-10);CGContextSetInterpolationQuality(canvas,kCGInterpolationNone);fill(CGRectMake(0,0,160,160),UIColor.whiteColor);self.window=[[UIWindow alloc]initWithWindowScene:(UIWindowScene*)scene];controller=[GameController new];self.window.rootViewController=controller;[self.window makeKeyAndVisible];srandom((unsigned)time(NULL));beginSimulatorTests();[NSTimer scheduledTimerWithTimeInterval:.1 repeats:NO block:^(NSTimer*t){extern long MerchantPilotMain(Word,Ptr,Word);MerchantPilotMain(0,NULL,0);}];
+resources=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"resources" ofType:@"json"]] options:0 error:nil];events=[NSMutableArray new];forms=[NSMutableDictionary new];images=[NSMutableDictionary new];handleSizes=[NSMutableDictionary new];saveDirectory=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject stringByAppendingPathComponent:@"SpaceTraderClassic-v1"];[[NSFileManager defaultManager]createDirectoryAtPath:saveDirectory withIntermediateDirectories:YES attributes:nil error:nil];CGColorSpaceRef cs=CGColorSpaceCreateDeviceRGB();canvas=CGBitmapContextCreate(NULL,1600,1600,8,1600*4,cs,kCGImageAlphaPremultipliedLast);CGColorSpaceRelease(cs);CGContextTranslateCTM(canvas,0,1600);CGContextScaleCTM(canvas,10,-10);CGContextSetInterpolationQuality(canvas,kCGInterpolationNone);fill(CGRectMake(0,0,160,160),UIColor.whiteColor);self.window=[[UIWindow alloc]initWithWindowScene:(UIWindowScene*)scene];controller=[GameController new];nativeTabs=[STGameTabs new];self.window.rootViewController=nativeTabs;[self.window makeKeyAndVisible];srandom((unsigned)time(NULL));beginSimulatorTests();[NSTimer scheduledTimerWithTimeInterval:.1 repeats:NO block:^(NSTimer*t){extern long MerchantPilotMain(Word,Ptr,Word);MerchantPilotMain(0,NULL,0);}];
 }
 - (void)sceneDidEnterBackground:(UIScene*)scene {if(NameCommander[0]&&CurForm!=MainForm&&CurForm!=NewCommanderForm)SaveGame(0);}
 @end
