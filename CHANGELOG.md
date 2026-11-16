@@ -129,3 +129,7 @@ Circular glass Back control with a 44-point touch target. Only the Duo cover dis
 
 Places the circular Back button above the native Duo navigation bar and reclaims the top content space. Warp restores Find system through the original search dialog and original cheat handlers.
 Commander and crew share one card; the commander is listed once, with personal and effective skill values together.
+
+## 1.5.16 (build 33)
+
+Moves the crew occupancy count and capacity bar into the Commander & crew card above the commander details. The Equipment card contains only weapon, shield and gadget slots plus installed equipment, with the vacated space removed. Original crew counting, hiring and dismissal behavior is unchanged.
