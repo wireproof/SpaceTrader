@@ -84,3 +84,11 @@ All ten ships now use the approved second-remaster style: textured metallic pane
 ## 1.5.9 (build 26)
 
 Combined buying and selling into one Trade page with commodity artwork and cargo capacity. Current-system details, nearby systems and target details sit together below the market; the full galaxy map is available from Warp. Commander status moves to the top, while Trade, Yard, Warp, Commander, Bank and Menu share the side bar. The welcome screen now centers full-resolution Emerald artwork and start/help actions without gameplay controls. Ship and icon artwork and save format are unchanged.
+
+## 1.5.10 (build 27)
+
+- Combined nearby systems and galaxy on Warp, with shared destination routing.
+- Combined commander status, crew roster, current ship gauges and installed equipment artwork. Crew hire/dismiss actions retain original game rules. Removed unrelated charts from the roster.
+- Replaced the compact top commander summary with ship type, cargo, fuel and hull; tapping it opens the combined overview.
+- Matching Trade, Dock, Warp, Bank and Options navigation: right rail on Duo, bottom tabs on other devices.
+- Preserved approved artwork, bundle identity and save format.

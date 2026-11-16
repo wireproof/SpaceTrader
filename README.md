@@ -4,7 +4,7 @@ A native iPhone and iPad adaptation of Pieter Spronck’s Space Trader 1.2.2. Th
 
 ## Current release
 
-**1.5.9 (build 26)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.9).
+**1.5.10 (build 27)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.10).
 
 - Ten ships with a second pass of detailed metallic artwork, ten equipment icons and ten themed cargo icons.
 - Unified Trade screen with buy/sell actions, cargo-capacity indicators, and nearby-system comparison.
@@ -12,7 +12,7 @@ A native iPhone and iPad adaptation of Pieter Spronck’s Space Trader 1.2.2. Th
 - Responsive ship/equipment tiles and detail views, portrait and landscape layouts, native options and system light/dark appearance.
 - Original trading, travel, combat and save rules retained.
 
-This release reorganizes trading, navigation and commander status to use more of the screen, and refreshes the welcome screen. The approved second-remaster artwork and Emerald default icon are preserved. Menu > App icon (also available in Options) offers the full fleet, the other planet designs and Classic. Icon selection is managed by iOS and does not alter game saves. See [CHANGELOG.md](CHANGELOG.md) for previous presentation changes.
+This release combines nearby travel and the galaxy on Warp, and brings commander status, crew management, ship gauges and installed equipment artwork onto one overview. Tap the compact ship-status header or choose Options > Commander & ship to open it. Trade, Dock, Warp, Bank and Options use a right rail on Duo and bottom tabs on other devices. The approved second-remaster artwork and Emerald default icon are preserved. Menu > App icon (also available in Options) offers the full fleet, the other planet designs and Classic. Icon selection is managed by iOS and does not alter game saves. See [CHANGELOG.md](CHANGELOG.md) for previous presentation changes.
 
 ## Build and install
 
@@ -39,9 +39,9 @@ Save data remains in `Documents/SpaceTraderClassic-v1`. Keep this folder when up
 
 ## Validation
 
-Build 26 passed simulator gameplay checks on iPhone Duo (dark appearance) and 11-inch iPad Pro (light appearance), including buying and then selling directly from the combined market, quantity dialogs, travel, options, and save restoration. Portrait and short landscape layouts, the top status and side bar, and the welcome screen were visually reviewed. Nearby-system selection and the absence of the galaxy chart on Trade were checked.
+Build 27 simulator checks cover combined buy/sell, travel from the combined maps, commander/ship/roster composition, device-specific navigation placement, quantity dialogs, options and save restoration. Both simulator suites passed, including fresh-process save restoration. The Duo rail, iPad bottom tabs, combined Warp charts and commander overview were visually reviewed.
 
-Installed-app readback confirmed 1.5.9 (26) on the iPhone Duo and 11-inch iPad Pro. Saved-data and preference backup hashes were unchanged after installation; the checked directories are recorded in the local delivery report. Delivery was install-only: physical-device launch, runtime testing and visual confirmation were not performed. Simulator checks do not establish physical-device behavior.
+Installed-app readback confirmed 1.5.10 (27) on the iPhone Duo and 11-inch iPad Pro. Save and preference backup hashes were unchanged. Physical delivery was install-only. Launch, runtime testing and visual confirmation on physical devices are not performed. Simulator checks do not establish physical-device behavior.
 
 ## Credits and licenses
 
