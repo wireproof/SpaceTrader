@@ -124,3 +124,8 @@ Validation for 1.5.13: Duo and iPad simulator gameplay, native navigation, Optio
 ## 1.5.14 (31)
 
 Circular glass Back control with a 44-point touch target. Only the Duo cover display is restricted to portrait; the inner display and other devices retain rotation. Display classification uses physical screen dimensions rather than the content window.
+
+## 1.5.15 (32)
+
+Places the circular Back button above the native Duo navigation bar and reclaims the top content space. Warp restores Find system through the original search dialog and original cheat handlers.
+Commander and crew share one card; the commander is listed once, with personal and effective skill values together.

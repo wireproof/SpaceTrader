@@ -81,7 +81,18 @@ CGFloat pad=12,w=width-24,y=8;BOOL chart=active->id==WarpForm||active->id==Galac
  UIButton*start=nativeButton(nativeSurface,@"New commander",CGRectMake(cx+MAX(0,(cw-340)/2),top+art+116,MIN(cw,340),50),^{nativeMenu(1000);});start.tag=45000;
  nativeButton(nativeSurface,@"How to play",CGRectMake(cx+MAX(0,(cw-340)/2),top+art+178,MIN(cw,340),44),^{nativeMenu(1203);});nativeSurface.contentSize=CGSizeMake(width,MAX(height,top+art+238));return;}
 
- if(active->id==WarpForm||active->id==GalacticChartForm){heading.text=@"Warp";CGFloat mapH=MAX(260,MIN(390,height*.42));nativeMap(nativeSurface,CGRectMake(pad,y,w,mapH),NO);y+=mapH+12;
+ if(active->id==WarpForm||active->id==GalacticChartForm){heading.text=@"Warp";
+ UIButton*find=nativeButton(nativeSurface,@"Find system",CGRectMake(pad,y,w,44),^{
+  extern Boolean GalacticChartFormHandleEvent(EventPtr);
+  EventType event={.eType=ctlSelectEvent};event.data.ctlSelect.controlID=GalacticChartFindButton;
+  FormPtr previous=active;FormPtr chart=previous;
+  if(previous->id!=GalacticChartForm){chart=FrmInitForm(GalacticChartForm);active=chart;}
+  GalacticChartFormHandleEvent(&event);
+  if(chart!=previous){FrmDeleteForm(chart);active=previous;}
+  if(!events.count&&GalacticChartSystem>=0&&GalacticChartSystem<MAXSOLARSYSTEM)dashboardSelect(GalacticChartSystem);
+  dirty=YES;
+ });find.tag=49001;[find setImage:[UIImage systemImageNamed:@"magnifyingglass"] forState:UIControlStateNormal];y+=56;
+ CGFloat mapH=MAX(260,MIN(390,height*.42));nativeMap(nativeSurface,CGRectMake(pad,y,w,mapH),NO);y+=mapH+12;
  BOOL pair=w>=520;CGFloat cw=pair?(w-12)/2:w;
  dashboardSystem(nativeSurface,CGRectMake(pad,y,cw,320),COMMANDER.CurSystem,NO);
  dashboardSystem(nativeSurface,CGRectMake(pair?pad+cw+12:pad,pair?y:y+332,cw,320),dashboardTarget,YES);y+=pair?332:664;

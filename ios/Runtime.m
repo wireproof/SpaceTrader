@@ -33,6 +33,7 @@ static int navigationPage(int f){switch(f){case SystemInformationForm:case BuyCa
 static UIViewController *controller;
 static UITabBarController *nativeTabs;
 static BOOL nativeOptionsVisible;
+static UIButton *nativeBack;
 static UIImageView *screenView;
 static UIScrollView *dashboardScroll;
 static UIVisualEffectView *shortcutBar;
@@ -198,7 +199,7 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
  [self.view viewWithTag:903].hidden=YES;[self.view viewWithTag:901].hidden=YES;[self.view viewWithTag:902].hidden=YES;
 
  UIButton*shipHeader=[UIButton buttonWithType:UIButtonTypeCustom];shipHeader.tag=988;shipHeader.accessibilityLabel=@"Ship status. Open commander and ship overview";[shipHeader addAction:[UIAction actionWithHandler:^(__kindof UIAction*a){nativeMenu(1102);}] forControlEvents:UIControlEventTouchUpInside];[dashboardScroll addSubview:shipHeader];
- UIButton*back=[UIButton buttonWithType:UIButtonTypeSystem];back.tag=989;UIButtonConfiguration*config;
+ UIButton*back=[UIButton buttonWithType:UIButtonTypeSystem];nativeBack=back;back.tag=989;UIButtonConfiguration*config;
  if(@available(iOS 26.0,*))config=[UIButtonConfiguration glassButtonConfiguration];else config=[UIButtonConfiguration grayButtonConfiguration];
  config.image=[UIImage systemImageNamed:@"chevron.backward"];config.preferredSymbolConfigurationForImage=[UIImageSymbolConfiguration configurationWithPointSize:20 weight:UIImageSymbolWeightMedium];config.baseForegroundColor=UIColor.labelColor;config.cornerStyle=UIButtonConfigurationCornerStyleCapsule;config.contentInsets=NSDirectionalEdgeInsetsZero;back.configuration=config;back.accessibilityLabel=@"Back";[back addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];[dashboardScroll addSubview:back];
  nativeSurface=[UIScrollView new];nativeSurface.contentInsetAdjustmentBehavior=UIScrollViewContentInsetAdjustmentNever;[dashboardScroll addSubview:nativeSurface];screenView.hidden=YES;[self.view viewWithTag:984].hidden=YES;
@@ -206,10 +207,10 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
 - (void)traitCollectionDidChange:(UITraitCollection*)previous {[super traitCollectionDidChange:previous];if([self.traitCollection hasDifferentColorAppearanceComparedToTraitCollection:previous]){dirty=YES;[self setNeedsStatusBarAppearanceUpdate];}}
 - (UIStatusBarStyle)preferredStatusBarStyle {return self.traitCollection.userInterfaceStyle==UIUserInterfaceStyleDark?UIStatusBarStyleLightContent:UIStatusBarStyleDarkContent;}
 - (void)viewDidLayoutSubviews {
- [super viewDidLayoutSubviews];CGRect area=UIEdgeInsetsInsetRect(self.view.bounds,self.view.safeAreaInsets);BOOL welcome=active&&active->id==MainForm;CGFloat header=welcome?0:52;
+ [super viewDidLayoutSubviews];CGRect area=UIEdgeInsetsInsetRect(self.view.bounds,self.view.safeAreaInsets);BOOL welcome=active&&active->id==MainForm;CGFloat header=welcome||usesSideNavigation()?0:52;
  dashboardScroll.frame=area;dashboardScroll.contentSize=area.size;
  nativeSurface.frame=CGRectMake(0,header,area.size.width,MAX(100,area.size.height-header));
- [self.view viewWithTag:989].frame=CGRectMake(8,4,44,44);
+ if(!usesSideNavigation())nativeBack.frame=CGRectMake(8,4,44,44);
  shortcutBar.hidden=YES;dirty=YES;
 }
 - (void)goBack {
@@ -240,7 +241,8 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
 @implementation STGameTabs
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {return gameOrientationMask(self.view.window.windowScene);}
 - (void)viewDidLayoutSubviews {
- [super viewDidLayoutSubviews];UIWindowScene*scene=self.view.window.windowScene;if(!scene)return;
+ [super viewDidLayoutSubviews];
+ UIWindowScene*scene=self.view.window.windowScene;if(!scene)return;
  UIInterfaceOrientationMask mask=gameOrientationMask(scene);if(mask==self.lastOrientationMask)return;self.lastOrientationMask=mask;
  [self setNeedsUpdateOfSupportedInterfaceOrientations];
  if(mask==UIInterfaceOrientationMaskPortrait)[scene requestGeometryUpdateWithPreferences:[[UIWindowSceneGeometryPreferencesIOS alloc]initWithInterfaceOrientations:mask] errorHandler:^(NSError*error){NSLog(@"Cover portrait orientation: %@",error.localizedDescription);}];
@@ -251,11 +253,15 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
  if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad){if(@available(iOS 17.0,*))self.traitOverrides.horizontalSizeClass=UIUserInterfaceSizeClassCompact;}
  NSArray*names=@[@"Trade",@"Dock",@"Warp",@"Bank",@"Options"];
  NSArray*symbols=@[@"arrow.left.arrow.right",@"wrench.and.screwdriver",@"sparkles",@"building.columns",@"gearshape"];
- NSMutableArray*hosts=[NSMutableArray new];for(int i=0;i<5;i++){UIViewController*v=[UIViewController new];v.view.backgroundColor=UIColor.systemGroupedBackgroundColor;v.tabBarItem=[[UITabBarItem alloc]initWithTitle:names[i] image:[UIImage systemImageNamed:symbols[i]] tag:i];[hosts addObject:v];}
+ NSMutableArray*hosts=[NSMutableArray new];for(int i=0;i<5;i++){UIViewController*v=[UIViewController new];v.view.backgroundColor=UIColor.systemGroupedBackgroundColor;v.tabBarItem=[[UITabBarItem alloc]initWithTitle:names[i] image:[UIImage systemImageNamed:symbols[i]] tag:i];if(usesSideNavigation()){
+ UIBarButtonItem*backItem=[[UIBarButtonItem alloc]initWithImage:[UIImage systemImageNamed:@"chevron.backward"] style:UIBarButtonItemStylePlain target:controller action:@selector(goBack)];backItem.accessibilityLabel=@"Back";v.navigationItem.leftBarButtonItem=backItem;
+ UINavigationController*navigation=[[UINavigationController alloc]initWithRootViewController:v];navigation.tabBarItem=v.tabBarItem;[hosts addObject:navigation];
+ }else [hosts addObject:v];}
  self.viewControllers=hosts;self.customizableViewControllers=nil;[self attachGame];
+
 }
 - (void)attachGame {
- UIViewController*host=self.selectedViewController;if(!host||controller.parentViewController==host)return;
+ UIViewController*host=self.selectedViewController;if([host isKindOfClass:UINavigationController.class])host=((UINavigationController*)host).topViewController;if(!host||controller.parentViewController==host)return;
  [controller willMoveToParentViewController:nil];[controller.view removeFromSuperview];[controller removeFromParentViewController];
  [host addChildViewController:controller];controller.view.frame=host.view.bounds;controller.view.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;[host.view addSubview:controller.view];[controller didMoveToParentViewController:host];[controller.view setNeedsLayout];
 }
@@ -270,12 +276,13 @@ static void updateDashboard(void){
  BOOL playing=NameCommander[0]&&active&&active->menu==1000;
  BOOL welcome=active&&(active->id==MainForm||active->id==NewCommanderForm);shortcutBar.hidden=YES;
  if(@available(iOS 18.0,*)){nativeTabs.tabBarHidden=welcome;}else nativeTabs.tabBar.hidden=welcome;
+ if(usesSideNavigation())for(UINavigationController*nav in nativeTabs.viewControllers){nav.navigationBarHidden=welcome;nav.topViewController.navigationItem.leftBarButtonItem.enabled=active&&active->id!=EncounterForm&&active->id!=SpecialEventForm;}
  if(!nativeOptionsVisible&&!dialogDepth){int page=active?navigationPage(active->id):0;NSInteger index=page==BuyCargoForm?0:page==ShipYardForm?1:page==WarpForm?2:page==BankForm?3:-1;if(index>=0&&nativeTabs.selectedIndex!=index){nativeTabs.selectedIndex=index;[(STGameTabs*)nativeTabs attachGame];}}
  for(int i=930;i<=943;i++)[controller.view viewWithTag:i].hidden=YES;
  for(int i=901;i<=903;i++)[controller.view viewWithTag:i].hidden=YES;
  [controller.view viewWithTag:912].hidden=YES;[controller.view viewWithTag:914].hidden=YES;
  static int previousForm=-1;int currentForm=active?active->id:0;if(currentForm!=previousForm){[railScroll setContentOffset:CGPointZero animated:NO];previousForm=currentForm;[controller.view setNeedsLayout];}
- BOOL dockPage=active&&navigationPage(active->id)==ShipYardForm;[controller.view viewWithTag:985].hidden=YES;[controller.view viewWithTag:986].hidden=YES;[controller.view viewWithTag:988].hidden=YES;[controller.view viewWithTag:989].hidden=active&&active->id==MainForm;((UIButton*)[controller.view viewWithTag:989]).enabled=active&&active->id!=EncounterForm&&active->id!=SpecialEventForm;[controller.view viewWithTag:988].userInteractionEnabled=playing&&!dialogDepth;
+ BOOL dockPage=active&&navigationPage(active->id)==ShipYardForm;[controller.view viewWithTag:985].hidden=YES;[controller.view viewWithTag:986].hidden=YES;[controller.view viewWithTag:988].hidden=YES;nativeBack.hidden=usesSideNavigation()||(active&&active->id==MainForm);((UIButton*)nativeBack).enabled=active&&active->id!=EncounterForm&&active->id!=SpecialEventForm;[controller.view viewWithTag:988].userInteractionEnabled=playing&&!dialogDepth;
  UILabel*context=(UILabel*)[controller.view viewWithTag:987];int cargo=0;for(int i=0;i<MAXTRADEITEM;i++)cargo+=Ship.Cargo[i];context.text=playing?[NSString stringWithFormat:@"CURRENT SYSTEM\n%@ • %@\n\nSHIP & CARGO\n%@ • %d bays occupied",str(SolarSystemName[CURSYSTEM.NameIndex]),str(TechLevel[CURSYSTEM.TechLevel]),str(Shiptype[Ship.Type].Name),cargo]:@"Start a new commander to explore the galaxy.";
  UILabel*status=(UILabel*)[controller.view viewWithTag:985];UILabel*detail=(UILabel*)[controller.view viewWithTag:986];
  status.text=playing?[NSString stringWithFormat:@"%@  •  Cargo %d/%d",str(Shiptype[Ship.Type].Name),FilledCargoBays(),TotalCargoBays()]:@"";
