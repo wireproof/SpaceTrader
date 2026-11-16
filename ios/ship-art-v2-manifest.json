@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Flea",
+    "type": 0,
+    "icon": "artwork/ships-hd-v2/icons/Flea.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Flea.png",
+    "runtime": "ios/Resources/ship-hd-0.png",
+    "icon_sha256": "a117984d3721793e72922072b465bb6f1fa4992e755f517e10c4fe288b084c01",
+    "transparent_sha256": "4320cdd99b63b92c08c202137acffc7cccbdc1a109c01dc4a815aaf28ac61983",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  },
+  {
+    "name": "Gnat",
+    "type": 1,
+    "icon": "artwork/ships-hd-v2/icons/Gnat.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Gnat.png",
+    "runtime": "ios/Resources/ship-hd-1.png",
+    "icon_sha256": "5d3350532129864ba29c13e2f595a3482679fcb283c143fa5ae6422b6519b0e1",
+    "transparent_sha256": "ef31ac5bb5ce689e1ce727163b5bcabffdcaaa21dd79a9a4d2e75a36dfa8a777",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  },
+  {
+    "name": "Firefly",
+    "type": 2,
+    "icon": "artwork/ships-hd-v2/icons/Firefly.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Firefly.png",
+    "runtime": "ios/Resources/ship-hd-2.png",
+    "icon_sha256": "5159b9cedfa13a0684ef08a83808a22581ee7cafb4bc2add953689c6545248e6",
+    "transparent_sha256": "b6396324d373ecd68ae691db545f9161c17fc27878957662a5be24c82b073e52",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  },
+  {
+    "name": "Mosquito",
+    "type": 3,
+    "icon": "artwork/ships-hd-v2/icons/Mosquito.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Mosquito.png",
+    "runtime": "ios/Resources/ship-hd-3.png",
+    "icon_sha256": "544b5876667d10565aae778a7dfd070135eb7dcaf605869b8a722fde4c999202",
+    "transparent_sha256": "3bb9719b8a002aab57ea1effbc97dc13aaac372ef3a69e0c62390a46c0acf826",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  },
+  {
+    "name": "Bumblebee",
+    "type": 4,
+    "icon": "artwork/ships-hd-v2/icons/Bumblebee.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Bumblebee.png",
+    "runtime": "ios/Resources/ship-hd-4.png",
+    "icon_sha256": "0a2c21c9471ddfe23521297e0e2d347f925248987fa8cb5f166e72b5ee8b181a",
+    "transparent_sha256": "69306cd2dbbdbf33c257ecb229caf94a8cdc6b0a6bfb34cdac576d91a572efcf",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  },
+  {
+    "name": "Beetle",
+    "type": 5,
+    "icon": "artwork/ships-hd-v2/icons/Beetle.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Beetle.png",
+    "runtime": "ios/Resources/ship-hd-5.png",
+    "icon_sha256": "6b7525493d5efc7f1da5cdab63a733110c99483133457f8ecc5567d15e86d85f",
+    "transparent_sha256": "283ba59575e72f098cde05d01bd039dae47fb422fdbb36a965521caa6db27d48",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  },
+  {
+    "name": "Hornet",
+    "type": 6,
+    "icon": "artwork/ships-hd-v2/icons/Hornet.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Hornet.png",
+    "runtime": "ios/Resources/ship-hd-6.png",
+    "icon_sha256": "f2b56feaf2af67302350fc94025f9e4365633d0b018167016c6a2dec300cd86f",
+    "transparent_sha256": "c5fcee848efd332e307eff67d7db100e634f4243917c7ffb2e6472cbe0386012",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  },
+  {
+    "name": "Grasshopper",
+    "type": 7,
+    "icon": "artwork/ships-hd-v2/icons/Grasshopper.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Grasshopper.png",
+    "runtime": "ios/Resources/ship-hd-7.png",
+    "icon_sha256": "7f0b5ca7836d66560b1f3bb738808f0f7e5ecee499686fc1dc5be8f7425d973a",
+    "transparent_sha256": "670327d075d0e80ee4ae7e4078d87742634248e5c0936b613a0cdd93c17d7e9e",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  },
+  {
+    "name": "Termite",
+    "type": 8,
+    "icon": "artwork/ships-hd-v2/icons/Termite.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Termite.png",
+    "runtime": "ios/Resources/ship-hd-8.png",
+    "icon_sha256": "bc50dfd7781a76075e9f66b0b6dcb9582a2460fc53b835cba04b8a28088d76f4",
+    "transparent_sha256": "5ccff8b1264b2cf629396be55b5ed8f8ba3ae9bae7d57a8dec313d47c85c535c",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  },
+  {
+    "name": "Wasp",
+    "type": 9,
+    "icon": "artwork/ships-hd-v2/icons/Wasp.png",
+    "transparent": "artwork/ships-hd-v2/transparent/Wasp.png",
+    "runtime": "ios/Resources/ship-hd-9.png",
+    "icon_sha256": "e012de969525fd96c5334e2202bb5f215c14aaca6351d4d5838091626b0d8319",
+    "transparent_sha256": "fefaa6f98998956c736ebcadcb31ba2c5f0da820cef04dccc9012db6f407e36b",
+    "generation": "Built-in image generation; prompts in artwork/ships-hd-v2/README.md"
+  }
+]

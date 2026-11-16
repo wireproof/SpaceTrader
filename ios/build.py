@@ -19,6 +19,10 @@ def compile(p):
 objects=list(concurrent.futures.ThreadPoolExecutor(8).map(compile,sources))
 subprocess.run(flags+objects+['-framework','UIKit','-framework','Foundation','-framework','CoreGraphics','-framework','QuartzCore','-o',str(app/'SpaceTrader')],check=True)
 for p in (root/'Resources').iterdir():shutil.copy2(p,app/p.name)
+# Approved Emerald is the primary icon; retain the old source for Classic alternate.
+for size in [120,152,167,180]:
+ subprocess.run(['sips','-z',str(size),str(size),str(root.parent/'artwork/app-icon-remastered/SpaceTrader-AppIcon-v2.png'),'--out',str(app/f'AppIcon{size}.png')],check=True,stdout=subprocess.DEVNULL)
+
 info=dict(CFBundleExecutable='SpaceTrader',CFBundleIdentifier=version['bundle_id'],CFBundleName='Space Trader',CFBundleDisplayName='Space Trader',CFBundleVersion=str(version['build']),CFBundleShortVersionString=version['version'],CFBundlePackageType='APPL',MinimumOSVersion='16.0',LSRequiresIPhoneOS=True,UIDeviceFamily=[1,2],UILaunchScreen={},UIStatusBarStyle='UIStatusBarStyleDefault',UISupportedInterfaceOrientations=['UIInterfaceOrientationPortrait','UIInterfaceOrientationLandscapeLeft','UIInterfaceOrientationLandscapeRight'],UIRequiresFullScreen=False,CFBundleIcons={'CFBundlePrimaryIcon':{'CFBundleIconFiles':['AppIcon120','AppIcon180']}},LSSupportsOpeningDocumentsInPlace=True,UIFileSharingEnabled=True,ITSAppUsesNonExemptEncryption=False)
 info['UIApplicationSceneManifest']={'UIApplicationSupportsMultipleScenes':False,'UISceneConfigurations':{'UIWindowSceneSessionRoleApplication':[{'UISceneConfigurationName':'Space Trader','UISceneDelegateClassName':'STClassicSceneDelegate'}]}}
 info['CFBundleIcons~ipad']={'CFBundlePrimaryIcon':{'CFBundleIconFiles':['AppIcon120','AppIcon152','AppIcon167','AppIcon180']}}

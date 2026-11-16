@@ -12,7 +12,7 @@ static void beginIconTests(void){
   [NSTimer scheduledTimerWithTimeInterval:1 repeats:NO block:^(NSTimer*t){
    STAppIconPicker *picker=(STAppIconPicker*)((UINavigationController*)controller.presentedViewController).topViewController;
    BOOL assets=YES;for(NSDictionary *item in picker.choices)if(![UIImage imageNamed:item[@"preview"]])assets=NO;
-   NSDictionary *r=@{@"choices":@(picker.choices.count),@"supports_alternates":@(UIApplication.sharedApplication.supportsAlternateIcons),@"preview_assets":@(assets),@"current_icon":UIApplication.sharedApplication.alternateIconName?:@"Classic",@"picker_visible":@(picker.view.window!=nil)};
+   NSDictionary *r=@{@"choices":@(picker.choices.count),@"supports_alternates":@(UIApplication.sharedApplication.supportsAlternateIcons),@"preview_assets":@(assets),@"current_icon":UIApplication.sharedApplication.alternateIconName?:@"Emerald (Default)",@"picker_visible":@(picker.view.window!=nil)};
    [[NSJSONSerialization dataWithJSONObject:r options:NSJSONWritingPrettyPrinted error:nil]writeToFile:[saveDirectory stringByAppendingPathComponent:@"icon-report.json"] atomically:YES];
    UIGraphicsBeginImageContextWithOptions(picker.navigationController.view.bounds.size,YES,0);[picker.navigationController.view drawViewHierarchyInRect:picker.navigationController.view.bounds afterScreenUpdates:YES];UIImage *im=UIGraphicsGetImageFromCurrentImageContext();UIGraphicsEndImageContext();[UIImagePNGRepresentation(im)writeToFile:[saveDirectory stringByAppendingPathComponent:@"icon-picker.png"] atomically:YES];
   }];

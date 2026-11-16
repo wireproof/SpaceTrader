@@ -1,14 +1,21 @@
 [
   {
     "name": "",
-    "title": "Classic",
+    "title": "Emerald (Default)",
     "preview": "AppIcon180.png"
   },
   {
     "name": "PlanetEmerald",
     "title": "Emerald",
     "source": "artwork/app-icon-remastered/SpaceTrader-AppIcon-v2.png",
-    "preview": "STIconPlanetEmerald60@3x.png"
+    "preview": "STIconPlanetEmerald60@3x.png",
+    "hidden": true
+  },
+  {
+    "name": "Classic",
+    "title": "Classic",
+    "source": "ios/Resources/AppIconSource.png",
+    "preview": "STIconClassic60@3x.png"
   },
   {
     "name": "PlanetOrbital",
@@ -25,61 +32,61 @@
   {
     "name": "ShipFlea",
     "title": "Flea",
-    "source": "artwork/app-icon-remastered/Flea.png",
+    "source": "artwork/ships-hd-v2/icons/Flea.png",
     "preview": "STIconShipFlea60@3x.png"
   },
   {
     "name": "ShipGnat",
     "title": "Gnat",
-    "source": "artwork/app-icon-remastered/Gnat.png",
+    "source": "artwork/ships-hd-v2/icons/Gnat.png",
     "preview": "STIconShipGnat60@3x.png"
   },
   {
     "name": "ShipFirefly",
     "title": "Firefly",
-    "source": "artwork/app-icon-remastered/Firefly.png",
+    "source": "artwork/ships-hd-v2/icons/Firefly.png",
     "preview": "STIconShipFirefly60@3x.png"
   },
   {
     "name": "ShipMosquito",
     "title": "Mosquito",
-    "source": "artwork/app-icon-remastered/Mosquito.png",
+    "source": "artwork/ships-hd-v2/icons/Mosquito.png",
     "preview": "STIconShipMosquito60@3x.png"
   },
   {
     "name": "ShipBumblebee",
     "title": "Bumblebee",
-    "source": "artwork/app-icon-remastered/Bumblebee.png",
+    "source": "artwork/ships-hd-v2/icons/Bumblebee.png",
     "preview": "STIconShipBumblebee60@3x.png"
   },
   {
     "name": "ShipBeetle",
     "title": "Beetle",
-    "source": "artwork/app-icon-remastered/Beetle.png",
+    "source": "artwork/ships-hd-v2/icons/Beetle.png",
     "preview": "STIconShipBeetle60@3x.png"
   },
   {
     "name": "ShipHornet",
     "title": "Hornet",
-    "source": "artwork/app-icon-remastered/Hornet.png",
+    "source": "artwork/ships-hd-v2/icons/Hornet.png",
     "preview": "STIconShipHornet60@3x.png"
   },
   {
     "name": "ShipGrasshopper",
     "title": "Grasshopper",
-    "source": "artwork/app-icon-remastered/Grasshopper.png",
+    "source": "artwork/ships-hd-v2/icons/Grasshopper.png",
     "preview": "STIconShipGrasshopper60@3x.png"
   },
   {
     "name": "ShipTermite",
     "title": "Termite",
-    "source": "artwork/app-icon-remastered/Termite.png",
+    "source": "artwork/ships-hd-v2/icons/Termite.png",
     "preview": "STIconShipTermite60@3x.png"
   },
   {
     "name": "ShipWasp",
     "title": "Wasp",
-    "source": "artwork/app-icon-remastered/Wasp.png",
+    "source": "artwork/ships-hd-v2/icons/Wasp.png",
     "preview": "STIconShipWasp60@3x.png"
   }
 ]

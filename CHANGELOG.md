@@ -76,3 +76,7 @@ Buy and Sell now show ten themed cargo illustrations beside commodity names, wit
 ### 1.5.7 (build 24)
 
 Adds a native app-icon picker to Menu and Options. Includes Classic, three remastered green-planet designs, and all ten ship designs with consistent dark teal space backgrounds. iPhone and iPad alternate-icon declarations and appropriately sized resources are generated from a shared manifest. The current selection is read from iOS; failures are shown without changing saves. Approved in-game artwork and gameplay remain unchanged.
+
+### 1.5.8 (build 25)
+
+All ten ships now use the approved second-remaster style: textured metallic panels, stronger dimensional highlights and luminous accents. Matching transparent artwork appears in the existing game views; dark forest-green starfield versions are selectable Home Screen icons. Emerald becomes the default, Classic remains selectable, and the prior Emerald alternate identifier remains registered for compatibility. Gameplay, ship statistics, layout and save format are unchanged.

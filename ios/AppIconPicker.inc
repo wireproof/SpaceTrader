@@ -2,7 +2,8 @@
 // Icon preference belongs to iOS, not the legacy game/save state.
 static NSArray<NSDictionary*> *appIconChoices(void) {
  NSData *data=[NSData dataWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"app-icons" ofType:@"json"]];
- return data?[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]:@[];
+ NSArray *all=data?[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]:@[];
+ return [all filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary *item,NSDictionary *bindings){return ![item[@"hidden"] boolValue];}]];
 }
 @interface STAppIconPicker : UICollectionViewController<UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong) NSArray<NSDictionary*> *choices;
@@ -39,7 +40,9 @@ static NSArray<NSDictionary*> *appIconChoices(void) {
  UICollectionViewCell *cell=[view dequeueReusableCellWithReuseIdentifier:@"icon" forIndexPath:path];
  for(UIView *sub in cell.contentView.subviews)[sub removeFromSuperview];
  NSDictionary *item=self.choices[path.item];
- BOOL selected=[(UIApplication.sharedApplication.alternateIconName?:@"") isEqualToString:item[@"name"]];
+ NSString *current=UIApplication.sharedApplication.alternateIconName?:@"";
+ if([current isEqualToString:@"PlanetEmerald"])current=@"";
+ BOOL selected=[current isEqualToString:item[@"name"]];
  cell.backgroundColor=UIColor.secondarySystemGroupedBackgroundColor;cell.layer.cornerRadius=16;
  cell.layer.borderWidth=selected?2:0;cell.layer.borderColor=UIColor.systemBlueColor.CGColor;
  CGFloat width=cell.bounds.size.width,side=MIN(width-24,128);

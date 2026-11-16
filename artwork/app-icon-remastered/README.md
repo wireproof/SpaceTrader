@@ -1,6 +1,6 @@
 # App icon artwork
 
-Generated with the built-in image generation tool. All three planet variants and ten ship variants are selectable in Menu > App icon; Classic retains the original primary icon.
+Generated with the built-in image generation tool. This folder preserves the first icon set and all three planet designs. Emerald is now the primary/default icon; Classic is selectable. Current ship icons are in artwork/ships-hd-v2/icons/.
 
 Planet variants: Emerald (v2) preserves the original green planet with a broad luminous lime ring; Orbital (v3) adds a brushed titanium orbital ring and faceted terrain; Nebula (v4) uses jade atmospheric bands, slender gold-edged rings and a soft teal nebula background. All are opaque square illustrations with no text or pre-rounded corners.
 

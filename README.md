@@ -4,15 +4,15 @@ A native iPhone and iPad adaptation of Pieter Spronck’s Space Trader 1.2.2. Th
 
 ## Current release
 
-**1.5.7 (build 24)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.7).
+**1.5.8 (build 25)** — [Download the release](https://github.com/wireproof/SpaceTrader/releases/tag/v1.5.8).
 
-- Ten remastered ship illustrations, ten equipment icons and ten themed cargo icons.
+- Ten ships with a second pass of detailed metallic artwork, ten equipment icons and ten themed cargo icons.
 - Separate Buy and Sell screens with cargo-capacity indicators.
 - Dedicated shipyard and current-ship views with fuel, hull, equipment and crew gauges.
 - Responsive ship/equipment tiles and detail views, portrait and landscape layouts, native options and system light/dark appearance.
 - Original trading, travel, combat and save rules retained.
 
-This release adds Menu > App icon (also available in Options): choose Classic, three remastered planets, or any of the ten ships on a matching dark teal space background. Icon selection is managed by iOS and does not alter game saves. See [CHANGELOG.md](CHANGELOG.md) for previous presentation changes.
+This release brings the approved second-remaster finish to all ten ships, both in-game and as Home Screen icons. Emerald is now the default app icon. Menu > App icon (also available in Options) offers the full fleet, the other planet designs and Classic. Icon selection is managed by iOS and does not alter game saves. See [CHANGELOG.md](CHANGELOG.md) for previous presentation changes.
 
 ## Build and install
 
@@ -31,7 +31,7 @@ Version metadata is in `ios/version.json`. The permanent bundle ID is `com.wirep
 
 `ios/Game/` contains adapted gameplay source; `ios/Runtime.m` and the included native screen files implement the iOS interface. `original/` preserves upstream source and licensing. `SpaceTrader_color.prc` supplies the original Palm resources.
 
-All runtime assets are included in `ios/Resources/`: original sprites, equipment reference artwork, the app icon, and all 30 remastered ship/equipment/cargo images. `artwork/ships-hd-v1/` includes the remastered ship source images and generation manifest. `artwork/app-icon-remastered/` contains all 13 alternate-icon source images and provenance; `ios/app-icons.json` maps them to the picker. Equipment and cargo prompts and mappings are recorded in `ios/equipment-hd-manifest.json` and `ios/cargo-art-manifest.json`; equipment provenance is in `ios/equipment-art-provenance.json`.
+All runtime assets are included in `ios/Resources/`: original sprites, equipment reference artwork, the app icon, and all 30 remastered ship/equipment/cargo images. `artwork/ships-hd-v1/` preserves the first remaster. `artwork/ships-hd-v2/` includes the current opaque app icons, transparent game artwork and generation prompts; `ios/ship-art-v2-manifest.json` records resource mappings and hashes. `artwork/app-icon-remastered/` contains all 13 alternate-icon source images and provenance; `ios/app-icons.json` maps them to the picker. Equipment and cargo prompts and mappings are recorded in `ios/equipment-hd-manifest.json` and `ios/cargo-art-manifest.json`; equipment provenance is in `ios/equipment-art-provenance.json`.
 
 ## Saves
 
@@ -39,9 +39,9 @@ Save data remains in `Documents/SpaceTraderClassic-v1`. Keep this folder when up
 
 ## Validation
 
-Build 24 passed the isolated iOS 27.1 simulator gameplay checks, including trading, travel, options and save restoration across an app restart. Icon-picker previews were visually reviewed on iPhone and iPad simulators; all 14 choices loaded and both reported alternate-icon support. Switching to Flea and retaining that selection across an app restart were verified in the iPhone simulator. Planet switching and restoring Classic were not independently completed because the simulator system confirmation interrupted the automated sequence.
+Build 25 passed gameplay and fresh-process save restoration checks on the iPhone Duo (iOS 27.1) and 11-inch iPad Pro (iOS 18.4) simulators. The ship catalog, current-ship artwork, and icon picker were visually reviewed. All 14 visible icon choices loaded, both simulators reported alternate-icon support, and Emerald appeared as the default. This update did not repeat every alternate-icon switching transition.
 
-Installed-app readback confirmed 1.5.7 (24) on the iPhone Duo and 11-inch iPad Pro. Delivery was install-only: physical-device launch, runtime testing and visual confirmation were not performed. Simulator checks do not establish physical-device behavior.
+Installed-app readback confirmed 1.5.8 (25) on the iPhone Duo and 11-inch iPad Pro. Saved-data and preference backup hashes were unchanged after installation; the iPad directories were empty before and after. Delivery was install-only: physical-device launch, runtime testing and visual confirmation were not performed. Simulator checks do not establish physical-device behavior.
 
 ## Credits and licenses
 
