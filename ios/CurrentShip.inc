@@ -11,12 +11,12 @@ static void nativeCurrentShip(CGFloat width,CGFloat height){
  for(int k=0;k<3;k++){int count=k==0?MAXWEAPON:k==1?MAXSHIELD:MAXGADGET;for(int j=0;j<count;j++){int t=k==0?Ship.Weapon[j]:k==1?Ship.Shield[j]:Ship.Gadget[j];if(t<0)continue;NSString*name=k==0?str(Weapontype[t].Name):k==1?str(Shieldtype[t].Name):str(Gadgettype[t].Name);int icon=k==0?(t<3?t:-1):k==1?(t<2?t+3:-1):(t<5?t+5:-1);[items addObject:@{@"name":name.capitalizedString,@"icon":@(icon)}];}}
  if(EscapePod)[items addObject:@{@"name":@"Escape Pod",@"icon":@(-1)}];
  UIView*slots=[nativeSurface viewWithTag:43001];
- int columns=cw>=500?3:2;CGFloat tileW=(cw-32-(columns-1)*8)/columns;CGFloat loadoutY=40,loadoutHeight=items.count?32+ceil(items.count/(double)columns)*116:54,slotsHeight=loadoutY+loadoutHeight+68;
+ int columns=cw>=500?3:2;CGFloat tileW=(cw-32-(columns-1)*8)/columns;CGFloat loadoutY=40,loadoutHeight=items.count?ceil(items.count/(double)columns)*116:28,slotsHeight=loadoutY+loadoutHeight+68;
  CGRect sf=slots.frame;sf.size.height=slotsHeight;slots.frame=sf;
  UIView*loadout=[UIView new];loadout.frame=CGRectMake(16,loadoutY,cw-32,loadoutHeight);loadout.tag=43003;[slots addSubview:loadout];
- nativeLabel(loadout,@"Installed Equipment",CGRectMake(0,0,cw-32,24),YES).font=[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
- if(!items.count)nativeLabel(loadout,@"No equipment installed",CGRectMake(0,26,cw-32,24),NO);
- for(int i=0;i<items.count;i++){NSDictionary*item=items[i];int icon=[item[@"icon"]intValue];UIView*tile=nativeCard(loadout,CGRectMake((i%columns)*(tileW+8),32+(i/columns)*116,tileW,108));tile.backgroundColor=UIColor.tertiarySystemGroupedBackgroundColor;UIImageView*im=[[UIImageView alloc]initWithImage:icon>=0?equipmentArt(icon):[UIImage systemImageNamed:@"gearshape"]];im.contentMode=UIViewContentModeScaleAspectFit;im.frame=CGRectMake((tileW-64)/2,8,64,52);[tile addSubview:im];nativeLabel(tile,item[@"name"],CGRectMake(6,64,tileW-12,36),YES).font=[UIFont systemFontOfSize:14 weight:UIFontWeightSemibold];}
+
+ if(!items.count)nativeLabel(loadout,@"No equipment installed",CGRectMake(0,0,cw-32,24),NO);
+ for(int i=0;i<items.count;i++){NSDictionary*item=items[i];int icon=[item[@"icon"]intValue];UIView*tile=nativeCard(loadout,CGRectMake((i%columns)*(tileW+8),(i/columns)*116,tileW,108));tile.backgroundColor=UIColor.tertiarySystemGroupedBackgroundColor;UIImageView*im=[[UIImageView alloc]initWithImage:icon>=0?equipmentArt(icon):[UIImage systemImageNamed:@"gearshape"]];im.contentMode=UIViewContentModeScaleAspectFit;im.frame=CGRectMake((tileW-64)/2,8,64,52);[tile addSubview:im];nativeLabel(tile,item[@"name"],CGRectMake(6,64,tileW-12,36),YES).font=[UIFont systemFontOfSize:14 weight:UIFontWeightSemibold];}
  for(UIView*child in slots.subviews)if([child isKindOfClass:UIButton.class])child.frame=CGRectMake(16,sf.size.height-56,cw-32,40);
  y=MAX(CGRectGetMaxY(slots.frame),CGRectGetMaxY([nativeSurface viewWithTag:43002].frame))+12;
  UIView*cmd=dashboardPanel(nativeSurface,@"Commander & Crew",CGRectMake(12,y,w,354));cmd.tag=47000;nativeLabel(cmd,str(NameCommander),CGRectMake(16,42,w-32,32),YES).font=[UIFont systemFontOfSize:24 weight:UIFontWeightSemibold];

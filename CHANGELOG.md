@@ -1,3 +1,10 @@
+# 1.5.24 (41)
+
+- Left-aligned Trade credits with three small gold coins.
+- Crew meter uses a left-aligned label and centered count.
+- Removed redundant Installed Equipment subheading.
+- System tiles place bold icon labels above smaller values.
+
 # 1.5.23 (40)
 
 - Restored a single row of cargo-capacity segments on Dock and Trade.
