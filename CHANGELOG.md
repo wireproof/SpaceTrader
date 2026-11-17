@@ -1,3 +1,10 @@
+# 1.5.20 (37)
+
+- Unified crew, fuel, hull, cargo and equipment slot meters beneath centered ship artwork.
+- Installed equipment remains in its own card group.
+- Removed Dock, Trade, Warp and Bank page headings; Trade credits now sit above cargo with a coin symbol.
+- Reworked ship, equipment and commander details into centered value tiles matching insurance.
+
 # Presentation and release history
 
 Release 1.2.4: the four configurable Palm shortcuts now appear as native right-side glass buttons, using the original control events. The game canvas renders at 1600×1600 instead of 640×640 to avoid magnifying low-resolution text. Landscape Menu/Help use compact text insets and taller controls.
