@@ -1,3 +1,10 @@
+# 1.5.26 (43)
+
+- Added previous/next reachable-planet controls to Trade, plus a top-right Warp action using the original travel flow.
+- Destination selection uses current fuel and excludes the current system; unavailable routes disable travel controls.
+- Bold commodity names and corresponding actions identify estimated destination profit and profitable local sales using the cargo purchase cost.
+- Removed the Credits label while retaining the gold coins and balance.
+
 # 1.5.25 (42)
 
 - Added a persistent three-style artwork picker with ship previews. Original equipment accompanies Original Upscaled; remastered equipment and cargo sets are shared where alternate sets do not exist.
