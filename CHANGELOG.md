@@ -1,3 +1,8 @@
+# 1.5.23 (40)
+
+- Restored a single row of cargo-capacity segments on Dock and Trade.
+- Reclaimed the extra row spacing for market items and ship controls.
+
 # 1.5.22 (39)
 
 - Shortened Warp system tiles and comparison panels while retaining aligned actions.

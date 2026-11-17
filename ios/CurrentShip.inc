@@ -5,8 +5,8 @@ static void commanderSkills(UIView *parent,CGFloat x,CGFloat y,CGFloat width,int
 // Current vessel overview, using the live game state and original navigation.
 static void nativeCurrentShip(CGFloat width,CGFloat height){
  CGFloat w=width-24;BOOL wide=width>=700;CGFloat cw=wide?(w-12)*.5:w;
- shipyardCard(nativeSurface,CGRectMake(12,8,cw,690));nativeSurface.subviews.lastObject.tag=43002;
- shipSlots(nativeSurface,CGRectMake(wide?24+cw:12,wide?8:710,cw,220));
+ shipyardCard(nativeSurface,CGRectMake(12,8,cw,674));nativeSurface.subviews.lastObject.tag=43002;
+ shipSlots(nativeSurface,CGRectMake(wide?24+cw:12,wide?8:694,cw,220));
  CGFloat y=0;NSMutableArray*items=[NSMutableArray new];
  for(int k=0;k<3;k++){int count=k==0?MAXWEAPON:k==1?MAXSHIELD:MAXGADGET;for(int j=0;j<count;j++){int t=k==0?Ship.Weapon[j]:k==1?Ship.Shield[j]:Ship.Gadget[j];if(t<0)continue;NSString*name=k==0?str(Weapontype[t].Name):k==1?str(Shieldtype[t].Name):str(Gadgettype[t].Name);int icon=k==0?(t<3?t:-1):k==1?(t<2?t+3:-1):(t<5?t+5:-1);[items addObject:@{@"name":name.capitalizedString,@"icon":@(icon)}];}}
  if(EscapePod)[items addObject:@{@"name":@"Escape Pod",@"icon":@(-1)}];
