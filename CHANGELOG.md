@@ -1,3 +1,11 @@
+# 1.5.21 (38)
+
+- Enlarged centered ship art; removed redundant ship caption and fuel unit suffix.
+- Commander & Crew leads the meters; cargo follows gadgets and uses two rows on Dock and Trade.
+- Zero-capacity shields show an empty track.
+- Added inline credit, commander, insurance and system stat icons; reorganized Warp system information as tiles.
+- Standardized native heading and action capitalization.
+
 # 1.5.20 (37)
 
 - Unified crew, fuel, hull, cargo and equipment slot meters beneath centered ship artwork.

@@ -17,7 +17,7 @@ static NSArray<NSDictionary*> *appIconChoices(void) {
  return self;
 }
 - (void)viewDidLoad {
- [super viewDidLoad];self.title=@"App icon";
+ [super viewDidLoad];self.title=@"App Icon";
  self.collectionView.backgroundColor=UIColor.systemGroupedBackgroundColor;
  [self.collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:@"icon"];
  self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
