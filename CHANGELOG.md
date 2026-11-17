@@ -1,3 +1,11 @@
+# 1.5.25 (42)
+
+- Added a persistent three-style artwork picker with ship previews. Original equipment accompanies Original Upscaled; remastered equipment and cargo sets are shared where alternate sets do not exist.
+- Centered panel headings without leading decorative icons.
+- System and insurance tiles place icons beside large labels and smaller values.
+- Trade items show separate name, aboard and available rows.
+- Three gold coins now have shaded faces, rims and embossed currency marks.
+
 # 1.5.24 (41)
 
 - Left-aligned Trade credits with three small gold coins.
