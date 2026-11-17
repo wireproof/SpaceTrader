@@ -1,3 +1,9 @@
+# 1.5.22 (39)
+
+- Shortened Warp system tiles and comparison panels while retaining aligned actions.
+- Enlarged and right-aligned Trade credits with the coin icon.
+- Commander statistics and crew skills use single-line labels and right-aligned values.
+
 # 1.5.21 (38)
 
 - Enlarged centered ship art; removed redundant ship caption and fuel unit suffix.
