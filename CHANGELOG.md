@@ -137,3 +137,7 @@ Moves the crew occupancy count and capacity bar into the Commander & crew card a
 ## 1.5.17 (build 34)
 
 Fixes Warp port actions: News opens a preview before the newspaper purchase action, Special opens the eligible local event or explains its absence, and Crew opens the combined roster. Average prices now has small cargo artwork, target estimates, local buy/sell quantity controls, named direction controls and preserved price-mode switching. Native text and data columns use centered alignment. Corrects original alert substitution numbering so prices appear in newspaper prompts.
+
+## 1.5.18 (build 35)
+
+Newspaper purchases now run through the normal form/event lifecycle instead of a temporary form. Regression checks wait for the newspaper article page and close it. Installed equipment uses illustrated cards, and insurance has a ship preview, coverage badge and separate value, premium and discount tiles. Fuel, hull and cargo labels are left aligned beside their icons with centered counts.

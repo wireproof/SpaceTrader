@@ -10,7 +10,7 @@ static void nativePortAction(int control){
  FormPtr previous=active,temp=FrmInitForm(SystemInformationForm);NSArray*old=[textRuns copy];active=temp;EventType update={.eType=frmUpdateEvent};SystemInformationFormHandleEvent(&update);Object*special=FrmGetObjectPtr(temp,FrmGetObjectIndex(temp,SystemInformationSpecialButton));BOOL available=special&&!special->hidden;active=previous;FrmDeleteForm(temp);textRuns=[old mutableCopy];dirty=YES;
  if(available){CurForm=SpecialEventForm;FrmGotoForm(CurForm);}else nativeNotice(@"Special",@"No special event is available in this system.");
 }
-static void nativeReadNews(void){nativePortInfo=NO;FormPtr previous=active,temp=FrmInitForm(SystemInformationForm);NSArray*old=[textRuns copy];active=temp;EventType e={.eType=ctlSelectEvent};e.data.ctlSelect.controlID=SystemInformationNewsButton;SystemInformationFormHandleEvent(&e);active=previous;FrmDeleteForm(temp);textRuns=[old mutableCopy];dirty=YES;}
+static void nativeReadNews(void){nativePortInfo=NO;dashboardRoute(MenuCommandSystemInformation,SystemInformationForm,SystemInformationNewsButton);dirty=YES;}
 static void nativePortSheet(CGFloat width,CGFloat height){
  for(UIView*v in nativeSurface.subviews)v.userInteractionEnabled=NO;
  UIView*shade=[UIView new];shade.frame=CGRectMake(0,0,width,height);shade.backgroundColor=[UIColor.blackColor colorWithAlphaComponent:.28];[nativeSurface addSubview:shade];CGFloat w=MIN(width-24,520),h=MIN(height-24,520);UIScrollView*sheet=[UIScrollView new];sheet.frame=CGRectMake((width-w)/2,MAX(12,(height-h)/2),w,h);sheet.layer.cornerRadius=20;sheet.backgroundColor=UIColor.secondarySystemGroupedBackgroundColor;sheet.tag=49100;[nativeSurface addSubview:sheet];
