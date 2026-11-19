@@ -216,6 +216,8 @@ int DmOpenDatabaseInfo(DmOpenRef ref,LocalID*id,void*a,void*b,void*c,void*d){if(
  if(!usesSideNavigation())nativeBack.frame=CGRectMake(8,4,44,44);
  shortcutBar.hidden=YES;dirty=YES;
 }
+- (void)previousSystem {if(!dialogDepth&&!events.count&&!self.presentedViewController)dashboardSelect(tradeDestination(dashboardTarget,-1));}
+- (void)nextSystem {if(!dialogDepth&&!events.count&&!self.presentedViewController)dashboardSelect(tradeDestination(dashboardTarget,1));}
 - (void)goBack {
  if(!active||self.presentedViewController||events.count)return;
  if(nativePortInfo){nativePortInfo=NO;dirty=YES;return;}
@@ -281,7 +283,12 @@ static void updateDashboard(void){
  BOOL playing=NameCommander[0]&&active&&active->menu==1000;
  BOOL welcome=active&&(active->id==MainForm||active->id==NewCommanderForm);shortcutBar.hidden=YES;
  if(@available(iOS 18.0,*)){nativeTabs.tabBarHidden=welcome;}else nativeTabs.tabBar.hidden=welcome;
- if(usesSideNavigation())for(UINavigationController*nav in nativeTabs.viewControllers){nav.navigationBarHidden=welcome;nav.topViewController.navigationItem.leftBarButtonItem.enabled=active&&active->id!=EncounterForm&&active->id!=SpecialEventForm;}
+ if(usesSideNavigation())for(UINavigationController*nav in nativeTabs.viewControllers){
+ nav.navigationBarHidden=welcome;UINavigationItem*item=nav.topViewController.navigationItem;
+ BOOL cycling=nav==nativeTabs.selectedViewController&&!nativeOptionsVisible&&!nativePortInfo&&!dialogDepth&&active&&(active->id==SystemInformationForm||active->id==BuyCargoForm||active->id==SellCargoForm||active->id==WarpForm||active->id==GalacticChartForm);
+ if(cycling){if(item.leftBarButtonItems.count!=2){UIBarButtonItem*previous=[[UIBarButtonItem alloc]initWithImage:[UIImage systemImageNamed:@"chevron.backward"] style:UIBarButtonItemStylePlain target:controller action:@selector(previousSystem)];previous.accessibilityLabel=@"Previous Reachable System";UIBarButtonItem*next=[[UIBarButtonItem alloc]initWithImage:[UIImage systemImageNamed:@"chevron.forward"] style:UIBarButtonItemStylePlain target:controller action:@selector(nextSystem)];next.accessibilityLabel=@"Next Reachable System";item.leftBarButtonItems=@[previous,next];}for(UIBarButtonItem*b in item.leftBarButtonItems)b.enabled=tradeDestination(dashboardTarget,1)>=0&&!events.count&&!controller.presentedViewController;
+ }else{if(item.leftBarButtonItems.count!=1||item.leftBarButtonItem.action!=@selector(goBack)){UIBarButtonItem*back=[[UIBarButtonItem alloc]initWithImage:[UIImage systemImageNamed:@"chevron.backward"] style:UIBarButtonItemStylePlain target:controller action:@selector(goBack)];back.accessibilityLabel=@"Back";item.leftBarButtonItems=@[back];}item.leftBarButtonItem.enabled=active&&active->id!=EncounterForm&&active->id!=SpecialEventForm;}}
+
  if(!nativeOptionsVisible&&!dialogDepth){int page=active?navigationPage(active->id):0;NSInteger index=page==BuyCargoForm?0:page==ShipYardForm?1:page==WarpForm?2:page==BankForm?3:-1;if(index>=0&&nativeTabs.selectedIndex!=index){nativeTabs.selectedIndex=index;[(STGameTabs*)nativeTabs attachGame];}}
  for(int i=930;i<=943;i++)[controller.view viewWithTag:i].hidden=YES;
  for(int i=901;i<=903;i++)[controller.view viewWithTag:i].hidden=YES;
@@ -291,7 +298,7 @@ static void updateDashboard(void){
  UILabel*context=(UILabel*)[controller.view viewWithTag:987];int cargo=0;for(int i=0;i<MAXTRADEITEM;i++)cargo+=Ship.Cargo[i];context.text=playing?[NSString stringWithFormat:@"CURRENT SYSTEM\n%@ • %@\n\nSHIP & CARGO\n%@ • %d bays occupied",str(SolarSystemName[CURSYSTEM.NameIndex]),str(TechLevel[CURSYSTEM.TechLevel]),str(Shiptype[Ship.Type].Name),cargo]:@"Start a new commander to explore the galaxy.";
  UILabel*status=(UILabel*)[controller.view viewWithTag:985];UILabel*detail=(UILabel*)[controller.view viewWithTag:986];
  status.text=playing?[NSString stringWithFormat:@"%@  •  Cargo %d/%d",str(Shiptype[Ship.Type].Name),FilledCargoBays(),TotalCargoBays()]:@"";
- detail.text=playing?[NSString stringWithFormat:@"Fuel %d/%d pc  •  Hull %ld/%ld",GetFuel(),GetFuelTanks(),(long)Ship.Hull,(long)GetHullStrength()]:@"";
+ detail.text=playing?[NSString stringWithFormat:@"Fuel %d/%d  •  Hull %ld/%ld",GetFuel(),GetFuelTanks(),(long)Ship.Hull,(long)GetHullStrength()]:@"";
  int selected=active?active->id:0;
  int tags[]={910,911,913,915,900};NSArray*names=@[@"Trade",@"Dock",@"Warp",@"Bank",@"Options"];NSArray*symbols=@[@"arrow.left.arrow.right",@"wrench.and.screwdriver",@"sparkles",@"building.columns",@"gearshape"];
  for(int i=0;i<5;i++){UIButton*b=(UIButton*)[controller.view viewWithTag:tags[i]];b.hidden=NO;b.enabled=i==4||(playing&&!dialogDepth);BOOL chosen=(i==0&&(selected==BuyCargoForm||selected==SellCargoForm||selected==SystemInformationForm))||(i==1&&navigationPage(selected)==ShipYardForm)||(i==2&&(selected==WarpForm||selected==GalacticChartForm||selected==ExecuteWarpForm))||(i==3&&selected==BankForm);styleRailButton(b,names[i],symbols[i],chosen);b.accessibilityLabel=names[i];}

@@ -1,3 +1,13 @@
+# 1.5.27 (44)
+
+- Trade and Warp use native previous/next system controls on both Duo displays; other devices have on-page controls.
+- Normal Back behavior remains on detail pages and other destinations.
+- System Name spans both columns above three complete rows of paired system details.
+- Removed pc suffixes from fuel labels throughout the native interface.
+- Profitable, enabled Buy and Max actions use bold white text on deep blue in both light and dark appearances.
+- Duo cover market rows shrink from 124 to 104 points, with 48-point artwork and separate name, aboard and available lines.
+- Trade controls retain 44-point touch targets; larger displays retain the existing row layout.
+
 # 1.5.26 (43)
 
 - Added previous/next reachable-planet controls to Trade, plus a top-right Warp action using the original travel flow.
