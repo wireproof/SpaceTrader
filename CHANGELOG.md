@@ -1,3 +1,9 @@
+# 1.5.28 (45)
+
+- Replaced the encounter bitmap-cache strip with two explicit ship cards, respecting the selected art style.
+- Damage, shield and faction bitmap layers no longer appear as stray sprites.
+- Added readable role labels and live hull/shield values and meters; original encounter actions remain unchanged.
+
 # 1.5.27 (44)
 
 - Trade and Warp use native previous/next system controls on both Duo displays; other devices have on-page controls.
