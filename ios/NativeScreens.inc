@@ -67,7 +67,7 @@ static CGFloat nativeCargo(UIView*p,CGFloat x,CGFloat y,CGFloat w,BOOL buying){n
 #include "CurrentShip.inc"
 #include "AverageMarket.inc"
 static void nativeBank(CGFloat width,CGFloat height){CGFloat w=width-24,y=8;
- UIView*balance=dashboardPanel(nativeSurface,@"Available Credits",CGRectMake(12,y,w,112));balance.tag=48000;nativeGlyph(balance,@"building.columns.fill",CGRectMake(w-76,30,48,48),UIColor.systemBlueColor);nativeLabel(balance,[NSString stringWithFormat:@"%ld cr",Credits],CGRectMake(16,40,w-100,52),YES).font=[UIFont systemFontOfSize:32 weight:UIFontWeightBold];y+=124;
+ UIView*balance=dashboardPanel(nativeSurface,@"Available Credits",CGRectMake(12,y,w,112));balance.tag=48000;nativeLabel(balance,[NSString stringWithFormat:@"%ld cr",Credits],CGRectMake(16,40,w-32,52),YES).font=[UIFont systemFontOfSize:32 weight:UIFontWeightBold];y+=124;
  long limit=PoliceRecordScore>=CLEANSCORE?MIN(25000L,MAX(1000L,((CurrentWorth()/10L)/500L)*500L)):500L;
  UIView*loan=dashboardPanel(nativeSurface,@"Credit Account",CGRectMake(12,y,w,212));shipMeter(loan,@"Debt",Debt,limit,40,w,UIColor.systemOrangeColor,NO);nativeLabel(loan,[NSString stringWithFormat:@"%ld credits available to borrow",MAX(0,limit-Debt)],CGRectMake(16,96,w-32,30),NO);
  int ids[]={BankGetLoanButton,BankPayBackButton};for(int i=0;i<2;i++){int id=ids[i];UIButton*b=nativeButton(loan,i?@"Repay Loan":@"Borrow",CGRectMake(16+i*(w-24)/2,148,(w-40)/2,44),^{Object*o=FrmGetObjectPtr(active,FrmGetObjectIndex(active,id));if(o)nativeControl(o);});b.tag=30000+id;b.enabled=i?(Debt>0&&Credits>0):Debt<limit;}y+=224;

@@ -1,3 +1,10 @@
+# 1.5.29 (46)
+
+- Removed the Bank balance icon and centered Available Credits and its value.
+- Trade Warp starts travel directly instead of opening the target-system details screen.
+- Preserves original travel-cost checks, fuel consumption, encounters and arrival behavior.
+- Review Course remains available on the Warp page.
+
 # 1.5.28 (45)
 
 - Replaced the encounter bitmap-cache strip with two explicit ship cards, respecting the selected art style.

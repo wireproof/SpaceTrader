@@ -24,7 +24,7 @@ static void dashboardMarket(UIView*p,CGRect f){
  if(!tradeReachable(dashboardTarget))dashboardTarget=tradeDestination(COMMANDER.CurSystem,1);
  int target=dashboardTarget;CGFloat center=w/2;
  if(!usesSideNavigation())for(int direction=-1;direction<=1;direction+=2){UIButton*b=nativeButton(panel,direction<0?@"‹":@"›",CGRectMake(center+(direction<0?-48:4),6,44,40),^{dashboardSelect(tradeDestination(dashboardTarget,direction));});b.tag=49100+(direction>0);b.accessibilityLabel=direction<0?@"Previous Reachable System":@"Next Reachable System";b.enabled=target>=0;}
- UIButton*warp=nativeButton(panel,@"Warp",CGRectMake(w-92,6,80,40),^{if(tradeReachable(dashboardTarget)){WarpSystem=dashboardTarget;CurForm=ExecuteWarpForm;FrmGotoForm(CurForm);}});warp.tag=49102;warp.enabled=target>=0;
+ UIButton*warp=nativeButton(panel,@"Warp",CGRectMake(w-92,6,80,40),^{if(!dialogDepth&&!events.count&&!controller.presentedViewController&&tradeReachable(dashboardTarget)){WarpSystem=dashboardTarget;DoWarp(false);dirty=YES;}});warp.tag=49102;warp.enabled=target>=0;
  NSString*route=target>=0?[NSString stringWithFormat:@"%@ · %ld pc · Estimated Profit in Bold",str(SolarSystemName[SolarSystem[target].NameIndex]),RealDistance(CURSYSTEM,SolarSystem[target])]:@"No Systems Within Current Fuel Range";
  UILabel*destination=nativeLabel(panel,route,CGRectMake(12,48,w-24,24),NO);destination.font=[UIFont systemFontOfSize:13];destination.textColor=UIColor.secondaryLabelColor;destination.tag=49103;
  shipMeter(panel,@"Cargo Bays",FilledCargoBays(),TotalCargoBays(),78,w,UIColor.systemOrangeColor,YES);
