@@ -1,3 +1,8 @@
+# 1.5.30 (47)
+
+- Added a Cost / Profit toggle beside Warp. Cost shows unit prices; Profit shows estimated destination margin for buys and margin against average acquisition cost for sells, excluding travel expenses.
+- Moved crew Hire and Dismiss buttons to a separate row below the name and daily wage, preventing overlap.
+
 # 1.5.29 (46)
 
 - Removed the Bank balance icon and centered Available Credits and its value.

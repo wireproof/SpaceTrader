@@ -28,13 +28,13 @@ static void nativeCurrentShip(CGFloat width,CGFloat height){
  int baseSkills[]={Mercenary[0].Pilot,Mercenary[0].Fighter,Mercenary[0].Trader,Mercenary[0].Engineer};commanderSkills(cmd,16,skillsY+34,w-32,PilotSkill(&Ship),FighterSkill(&Ship),TraderSkill(&Ship),EngineerSkill(&Ship),baseSkills);
  int hire=-1;for(int i=1;i<MAXCREWMEMBER;i++)if(i!=Ship.Crew[1]&&i!=Ship.Crew[2]&&Mercenary[i].CurSystem==COMMANDER.CurSystem){hire=i;break;}
  NSMutableArray*crew=[NSMutableArray new];for(int i=0;i<MAXCREW;i++)if(Ship.Crew[i]>0)[crew addObject:@{@"id":@(Ship.Crew[i]),@"slot":@(i)}];if(hire>=0)[crew addObject:@{@"id":@(hire),@"slot":@(-1)}];
- UIView*roster=[UIView new];roster.frame=CGRectMake(0,skillsY+142,w,44+crew.count*164+(hire<0?34:0));roster.tag=47001;[cmd addSubview:roster];nativeLabel(roster,@"Crew",CGRectMake(16,8,w-32,28),YES);CGRect cf=cmd.frame;cf.size.height=skillsY+142+roster.frame.size.height+12;cmd.frame=cf;
- for(int i=0;i<crew.count;i++){int member=[crew[i][@"id"]intValue],slot=[crew[i][@"slot"]intValue];CREWMEMBER m=Mercenary[member];CGFloat cy=40+i*164;NSString*name=member==0?str(NameCommander):str(MercenaryName[m.NameIndex]);nativeLabel(roster,name,CGRectMake(16,cy,w-132,26),YES);
+ UIView*roster=[UIView new];roster.frame=CGRectMake(0,skillsY+142,w,44+crew.count*212+(hire<0?34:0));roster.tag=47001;[cmd addSubview:roster];nativeLabel(roster,@"Crew",CGRectMake(16,8,w-32,28),YES);CGRect cf=cmd.frame;cf.size.height=skillsY+142+roster.frame.size.height+12;cmd.frame=cf;
+ for(int i=0;i<crew.count;i++){int member=[crew[i][@"id"]intValue],slot=[crew[i][@"slot"]intValue];CREWMEMBER m=Mercenary[member];CGFloat cy=40+i*212;NSString*name=member==0?str(NameCommander):str(MercenaryName[m.NameIndex]);nativeLabel(roster,name,CGRectMake(16,cy,w-32,26),YES);
  nativeLabel(roster,member==0?@"Commander":[NSString stringWithFormat:@"%@ · %d cr/day",slot<0?@"Available to hire":@"On board",MERCENARYHIREPRICE(member)],CGRectMake(16,cy+28,w-32,22),NO).font=[UIFont systemFontOfSize:14];
- commanderSkills(roster,16,cy+56,w-32,m.Pilot,m.Fighter,m.Trader,m.Engineer,NULL);
- UIView*divider=[UIView new];divider.backgroundColor=UIColor.separatorColor;divider.frame=CGRectMake(16,cy+154,w-32,.5);[roster addSubview:divider];
- if(member!=0){int control=slot<0?PersonnelRosterHire0Button:PersonnelRosterFire0Button+slot-1;UIButton*b=nativeButton(roster,slot<0?@"Hire":@"Dismiss",CGRectMake(w-108,cy,92,44),^{dashboardRoute(MenuCommandPersonnelRoster,PersonnelRosterForm,control);});b.tag=30000+control;}}
- if(hire<0)nativeLabel(roster,@"No crew available to hire here.",CGRectMake(16,44+crew.count*164,w-32,26),NO).textColor=UIColor.secondaryLabelColor;
+ commanderSkills(roster,16,cy+104,w-32,m.Pilot,m.Fighter,m.Trader,m.Engineer,NULL);
+ UIView*divider=[UIView new];divider.backgroundColor=UIColor.separatorColor;divider.frame=CGRectMake(16,cy+202,w-32,.5);[roster addSubview:divider];
+ if(member!=0){int control=slot<0?PersonnelRosterHire0Button:PersonnelRosterFire0Button+slot-1;UIButton*b=nativeButton(roster,slot<0?@"Hire":@"Dismiss",CGRectMake((w-140)/2,cy+54,140,44),^{dashboardRoute(MenuCommandPersonnelRoster,PersonnelRosterForm,control);});b.tag=30000+control;}}
+ if(hire<0)nativeLabel(roster,@"No crew available to hire here.",CGRectMake(16,44+crew.count*212,w-32,26),NO).textColor=UIColor.secondaryLabelColor;
  y=CGRectGetMaxY(cmd.frame)+12;NSArray*titles=@[@"Quests",@"Special Cargo"];int ids[]={CommanderStatusQuestsButton,CommanderStatusSpecialButton};CGFloat bw=(w-8)/2;
  for(int i=0;i<2;i++){int c=ids[i];UIButton*b=nativeButton(nativeSurface,titles[i],CGRectMake(12+i*(bw+8),y,bw,44),^{dashboardRoute(MenuCommandCommanderStatus,CommanderStatusForm,c);});b.tag=30000+c;}
  nativeSurface.contentSize=CGSizeMake(width,MAX(height,y+56));
