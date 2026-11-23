@@ -1,3 +1,8 @@
+# 1.5.31 (48)
+
+- Trade places Buy/Max on the left and Sell/All on the right in both price modes.
+- Encounters lead with ship artwork and status, followed by the description and bottom action controls. Wide layouts give encounters the full content width.
+
 # 1.5.30 (47)
 
 - Added a Cost / Profit toggle beside Warp. Cost shows unit prices; Profit shows estimated destination margin for buys and margin against average acquisition cost for sells, excluding travel expenses.
