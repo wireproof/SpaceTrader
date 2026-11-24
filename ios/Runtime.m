@@ -18,6 +18,8 @@ static UIInterfaceOrientationMask orientationMaskForDisplay(BOOL duo, CGSize pix
 static UIInterfaceOrientationMask gameOrientationMask(UIWindowScene*scene){
  UIScreen*screen=scene.screen;return orientationMaskForDisplay(usesSideNavigation(),screen.nativeBounds.size,screen.nativeScale);
 }
+static BOOL arrivalPending=NO;
+void NativeDidArrive(void){arrivalPending=YES;}
 static NSMutableDictionary *handleSizes;
 static NSDictionary *resources;
 static NSMutableArray<NSData*> *events;

@@ -1,3 +1,8 @@
+# 1.5.32 (49)
+
+- Unreachable-wormhole warnings now use a nonblocking native alert so OK can dismiss them.
+- Arrival shows the system just reached, with system details, News/Special/Crew and Continue to Trade instead of immediately showing the market.
+
 # 1.5.31 (48)
 
 - Trade places Buy/Max on the left and Sell/All on the right in both price modes.

@@ -2431,6 +2431,7 @@ Boolean WormholeExists( int a, int b )
 // *************************************************************************
 // Standard handling of arrival
 // *************************************************************************
+extern void NativeDidArrive(void);
 void Arrival( void )
 {
 	COMMANDER.CurSystem = WarpSystem;
@@ -2438,6 +2439,7 @@ void Arrival( void )
 	ChangeQuantities();
 	DeterminePrices(COMMANDER.CurSystem);
 	AlreadyPaidForNewspaper = false;
+	NativeDidArrive();
 
 }
 
